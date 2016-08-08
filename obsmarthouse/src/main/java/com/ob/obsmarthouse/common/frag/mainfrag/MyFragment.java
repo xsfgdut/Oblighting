@@ -16,8 +16,9 @@ import com.ob.obsmarthouse.common.base.BaseFragment;
  */
 public class MyFragment extends BaseFragment {
 
-    private static MyFragment myFragment;
     private static final String TAG = "MyFragment";
+
+    private static MyFragment myFragment;
     @SuppressLint("ValidFragment")
     private MyFragment() {
 
@@ -34,7 +35,6 @@ public class MyFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.d(TAG,TAG);
         return inflater.inflate(R.layout.my_frag,container,false);
     }
 

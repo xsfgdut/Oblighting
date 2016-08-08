@@ -16,27 +16,28 @@ import com.ob.obsmarthouse.common.base.BaseFragment;
  * Created by adolf_dong on 2016/5/5.
  */
 public class SceneFragment extends BaseFragment {
+    private static final String TAG = "SceneFragment";
+
     private static SceneFragment sceneFragment;
 
     @SuppressLint("ValidFragment")
     private SceneFragment() {
 
     }
+
     public static SceneFragment instance() {
         synchronized (SceneFragment.class) {
             if (sceneFragment == null) {
-            sceneFragment = new SceneFragment();
+                sceneFragment = new SceneFragment();
             }
         }
         return sceneFragment;
     }
 
-    private static final String TAG = "SceneFragment";
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.d(TAG,"SceneFragment");
-        return inflater.inflate(R.layout.scene_fragment,container,false);
+        return inflater.inflate(R.layout.scene_fragment, container, false);
     }
 
     @Override
@@ -75,8 +76,6 @@ public class SceneFragment extends BaseFragment {
     protected void findView(View view, Bundle savedInstanceState) {
 
     }
-
-
 
 
 }

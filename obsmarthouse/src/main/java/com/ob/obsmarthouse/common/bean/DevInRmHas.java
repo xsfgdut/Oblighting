@@ -1,10 +1,14 @@
 package com.ob.obsmarthouse.common.bean;
 
+import com.ob.obsmarthouse.common.constant.CloudConstant;
+
+import java.io.Serializable;
+
 /**
  * 房间内拥有设备的种类
  * Created by adolf_dong on 2016/5/6.
  */
-public class DevInRmHas {
+public class DevInRmHas implements Serializable{
     /**
      * 灯
      */

@@ -1,10 +1,13 @@
 package com.ob.obsmarthouse.common.bean;
 
+import java.io.Serializable;
+
 /**
  * 房间
  * Created by adolf_dong on 2016/5/6.
  */
-public class Position {
+public class Position implements Serializable{
+
     /**
      * 对应数据库主键
      */

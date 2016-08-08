@@ -32,6 +32,7 @@
     <string name="search_fal">打开搜索失败</string>
     <string name="search_full">节点已满，搜索新设备失败</string>
     <string name="single">设备</string>
+    <string name="device">设备</string>
     <string name="group">组</string>
     <string name="plus">+</string>
     <string name="edit">编辑</string>
@@ -40,6 +41,10 @@
     <string name="draw_delete">删除</string>
     <string name="draw_add">添加</string>
     <string name="my_position">我的房间</string>
+    <string name="position_room">房间</string>
+    <string name="scenn">场景</string>
+    <string name="creat">创建</string>
+    <string name="my">我的</string>
 
 
 </resources>

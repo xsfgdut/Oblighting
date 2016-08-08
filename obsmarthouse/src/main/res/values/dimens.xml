@@ -22,7 +22,7 @@
     <dimen name="big_content_w">200dp</dimen>
     <!--字体数据-->
     <dimen name="lit_textsize">15sp</dimen>
-    <dimen name="mid_textsize">20sp</dimen>
+    <dimen name="mid_textsize">18sp</dimen>
     <dimen name="big_textsize">25sp</dimen>
     <dimen name="super_big_textsize">35sp</dimen>
 

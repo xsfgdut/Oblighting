@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    xmlns:dky="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+    <com.ob.obsmarthouse.common.widget.TopTitle
+        android:id="@+id/scene_frag_tt"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mid_content_h"
+        dky:title_text="@string/scenn"
+        dky:title_text_size="@dimen/mid_textsize"
+        dky:right_text_src="@string/plus"
+        dky:right_text_size="@dimen/mid_textsize"
+        />
 </RelativeLayout>

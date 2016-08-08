@@ -69,7 +69,7 @@ public class BottomTab extends LinearLayout implements View.OnClickListener {
      * @param position {@link #TAB_ONE}{@link #TAB_TWO}{@link #TAB_THREE}{@link #TAB_FOUR}
      */
     @SuppressWarnings("deprecation")
-    private void changeShowView(int position) {
+    public void changeShowView(int position) {
         for (int i = 0; i < tabs.size(); i++) {
             Tab tab = tabs.get(i);
             Drawable drawable = getResources().getDrawable(position == i ? drawableSrcs[i + 4] : drawableSrcs[i]);

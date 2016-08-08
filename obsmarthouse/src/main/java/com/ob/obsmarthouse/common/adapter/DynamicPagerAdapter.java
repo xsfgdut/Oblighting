@@ -15,6 +15,9 @@ import java.util.List;
  * Created by adolf_dong on 2016/7/12.
  */
 public class DynamicPagerAdapter extends FragmentPagerAdapter {
+
+    private static final String TAG = "DynamicPagerAdapter";
+
     private List<BaseFragment> baseFragments = new ArrayList<>();
     public DynamicPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -34,10 +37,8 @@ public class DynamicPagerAdapter extends FragmentPagerAdapter {
         return baseFragments.size();
     }
 
-    private static final String TAG = "DynamicPagerAdapter";
     @Override
     public Fragment getItem(int position) {
-        Log.d(TAG, "getItem() called with: " + "position = [" + position + "]");
         return baseFragments.get(position);
     }
 }

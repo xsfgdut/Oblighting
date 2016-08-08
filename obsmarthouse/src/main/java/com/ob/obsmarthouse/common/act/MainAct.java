@@ -1,7 +1,9 @@
 package com.ob.obsmarthouse.common.act;
 
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.ob.obsmarthouse.R;
 import com.ob.obsmarthouse.common.adapter.DynamicPagerAdapter;
@@ -12,6 +14,8 @@ import com.ob.obsmarthouse.common.frag.mainfrag.PositionFragment;
 import com.ob.obsmarthouse.common.frag.mainfrag.SceneFragment;
 import com.ob.obsmarthouse.common.widget.BottomTab;
 import com.ob.obsmarthouse.common.widget.CustomViewPager;
+
+import org.w3c.dom.Text;
 
 /**
  * 主控制界面
@@ -36,17 +40,36 @@ public class MainAct extends BaseAct {
         setContentView(R.layout.main_act);
         dynamicPagerAdapter = new DynamicPagerAdapter(getSupportFragmentManager());
         deviceFragment = DeviceFragment.instance();
-        dynamicPagerAdapter.addFrag(deviceFragment);
         sceneFragment = SceneFragment.instance();
-        dynamicPagerAdapter.addFrag(sceneFragment);
         positionFragment=  PositionFragment.instance();
-        dynamicPagerAdapter.addFrag(positionFragment);
         myFragment = MyFragment.instance();
+        /*动态添加frag*/
+        dynamicPagerAdapter.addFrag(deviceFragment);
+        dynamicPagerAdapter.addFrag(sceneFragment);
+        dynamicPagerAdapter.addFrag(positionFragment);
         dynamicPagerAdapter.addFrag(myFragment);
         bottomTab = (BottomTab) findViewById(R.id.main_act_bottomtab);
         int[] drawsrcs = {R.drawable.tab_equipment_normal,R.drawable.tab_scene_normal,R.drawable.tab_home_normal,R.drawable.tab_my_normal,R.drawable.tab_equipment_press,R.drawable.tab_scene_press,R.drawable.tab_home_press,R.drawable.tab_my_press};
         bottomTab.setParameter(drawsrcs);
         viewPager = (CustomViewPager) findViewById(R.id.main_act_vp);
+        viewPager.setOffscreenPageLimit(3);
+        bottomTab.changeShowView(0);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                bottomTab.changeShowView(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         viewPager.setAdapter(dynamicPagerAdapter);
         bottomTab.setBoottomTabLsn(new BottomTab.BoottomTabLsn() {
             @Override

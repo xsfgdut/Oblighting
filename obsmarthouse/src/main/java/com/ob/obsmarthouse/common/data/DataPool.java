@@ -1,5 +1,6 @@
 package com.ob.obsmarthouse.common.data;
 
+import com.ob.obsmarthouse.common.bean.Position;
 import com.ob.obsmarthouse.common.bean.cloudbean.Obox;
 import com.ob.obsmarthouse.common.bean.localbean.ObGroup;
 import com.ob.obsmarthouse.common.bean.localbean.ObNode;
@@ -42,6 +43,18 @@ public class DataPool {
      */
     private static List<ObScene> scenes;
 
+    public static Position getPosition() {
+        return position;
+    }
+
+    public static void setPosition(Position position) {
+        DataPool.position = position;
+    }
+
+    /**
+     * 当前的position
+     */
+    private static Position position;
 
     /**
      * 对应obox单节点数据添加到本地

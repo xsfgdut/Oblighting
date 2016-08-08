@@ -16,19 +16,24 @@ import com.ob.obsmarthouse.common.base.BaseFragment;
 import com.ob.obsmarthouse.common.bean.cloudbean.DeviceConfig;
 import com.ob.obsmarthouse.common.widget.TopTitle;
 
-/**设备页面frag
+/**
+ * 设备页面frag
  * Created by adolf_dong on 2016/5/5.
  */
 public class DeviceFragment extends BaseFragment {
+    private static final String TAG = "DeviceFragment";
+
     private static DeviceFragment deviceFragment;
     private TopTitle topTitle;
     private ImageView imageView;
     private GridView gridLayout;
+
     @SuppressLint("ValidFragment")
-    private DeviceFragment(){
+    private DeviceFragment() {
     }
+
     public static DeviceFragment instance() {
-        synchronized (DeviceFragment.class){
+        synchronized (DeviceFragment.class) {
             if (deviceFragment == null) {
                 deviceFragment = new DeviceFragment();
             }
@@ -36,20 +41,19 @@ public class DeviceFragment extends BaseFragment {
         return deviceFragment;
     }
 
-    private static final String TAG = "DeviceFragment";
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.d(TAG, "DeviceFragment");
-        return inflater.inflate(R.layout.device_fragment,container,false);
+        return inflater.inflate(R.layout.device_fragment, container, false);
     }
 
     @Override
     protected void findView(View view, Bundle savedInstanceState) {
         topTitle = (TopTitle) view.findViewById(R.id.device_frag_tt);
-        topTitle.setTopBtnVisible(TopTitle.LEFT_POSITION,false);
+        topTitle.setTopBtnVisible(TopTitle.LEFT_POSITION, false);
         imageView = (ImageView) view.findViewById(R.id.device_frag_iv);
-        imageView.setImageResource(R.drawable.preview_position_back1);
+        //noinspection deprecation
+        imageView.setBackgroundDrawable(getResources().getDrawable(R.drawable.device_frag_top_bg));
         gridLayout = (GridView) view.findViewById(R.id.device_frag_gv);
 
     }

@@ -35,12 +35,12 @@ public class CloudBasePositionAdapter extends BasePositionAdapter {
     @Override
     protected Drawable onSetBackground(int position) {
         //noinspection deprecation
-        return context.getResources().getDrawable(R.drawable.preview_position_back2);
+        return context.getResources().getDrawable(R.drawable.preview_position_back1);
     }
 
     @Override
     protected int onSetFirstPreview(int position) {
-        // FIXME: 2016/8/5 暂定为lamp
+        // FIXME: 2016/8/5 资源缺失，暂定为lamp
         return R.drawable.led_rgb;
     }
 
