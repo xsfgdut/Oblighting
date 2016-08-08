@@ -10,6 +10,7 @@ import com.ob.obsmarthouse.common.base.BaseAct;
  * Created by adolf_dong on 2016/8/5.
  */
 public class CreatPositionAct extends BaseAct {
+    //add test
     @Override
     protected void findView(Bundle savedInstanceState) {
         setContentView(R.layout.creatposition_act);
