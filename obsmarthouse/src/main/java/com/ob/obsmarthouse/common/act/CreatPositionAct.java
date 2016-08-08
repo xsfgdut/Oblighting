@@ -6,7 +6,7 @@ import com.ob.obsmarthouse.R;
 import com.ob.obsmarthouse.common.base.BaseAct;
 
 /**
- * 创建位置信息act
+ * 创建位置信息act,命名，背景选择
  * Created by adolf_dong on 2016/8/5.
  */
 public class CreatPositionAct extends BaseAct {
