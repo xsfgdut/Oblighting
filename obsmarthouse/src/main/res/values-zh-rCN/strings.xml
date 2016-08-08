@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--完成后再更新文件 -->
+    <string name="app_name">OB Smart</string>
+    <string name="declare">Linked by On-Bright Solutions</string>
+    <string name="login">登录</string>
+    <string name="login_local">本地登录</string>
+    <string name="login_cloud">远程登录</string>
+    <string name="login_cloud_account">账号</string>
+    <string name="login_cloud_pwd">密码</string>
+    <string name="login_cloud_use_open_account">使用第三方账号登录</string>
+    <string name="login_cloud_regist_tips">现在去注册</string>
+
+    <string name="net_err">网络异常</string>
+    <string name="search_tips">正在搜索。。。</string>
+    <string name="search_msg">若灯在此过程中未被扫描，请重复执行此过程，并保证灯被重新上电</string>
+
+</resources>

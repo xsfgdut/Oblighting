@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--本地登录frag-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/super_big_margin">
+
+    <Button
+        android:id="@+id/login_local_btn"
+        style="@style/login_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" />
+
+    <include
+        android:id="@+id/login_local_choose"
+        layout="@layout/login_choose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_local_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/mid_margin" />
+
+
+</RelativeLayout>

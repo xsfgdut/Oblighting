@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--滑动组件-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants">
+
+    <RelativeLayout
+        android:id="@+id/hind_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/hint_left_tv"
+            android:layout_width="@dimen/mid_content_h"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/mid_content_h"
+            android:background="@color/blue"
+            android:gravity="center"
+            android:text="@string/hint_left_text"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/hint_right_tv"
+            android:layout_width="@dimen/mid_content_h"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@color/redson"
+            android:gravity="center"
+            android:text="@string/hint_right_text"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <com.ob.obsmarthouse.common.widget.DrawItem
+        android:id="@+id/drawitem"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/draw_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@mipmap/about_us_logo" />
+
+            <TextView
+                android:id="@+id/draw_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/draw_icon"
+                android:text="@string/app_name" />
+        </RelativeLayout>
+
+    </com.ob.obsmarthouse.common.widget.DrawItem>
+
+</FrameLayout>

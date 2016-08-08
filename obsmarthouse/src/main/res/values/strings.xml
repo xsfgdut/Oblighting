@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">OB Smart</string>
+    <string name="declare">Linked by On-Bright Solutions</string>
+    <string name="login">登录</string>
+    <string name="login_local">本地登录</string>
+    <string name="login_cut">|</string>
+    <string name="login_cloud">远程登录</string>
+    <string name="login_cloud_account">账号</string>
+    <string name="login_cloud_pwd">密码</string>
+    <string name="login_cloud_use_open_account">使用第三方账号登录</string>
+    <string name="login_cloud_regist_tips">现在去注册</string>
+    <string name="hint_left_text">左文</string>
+    <string name="hint_right_text">右文</string>
+    <string name="net_err">网络异常</string>
+    <string name="check_wifi_tips">检查网络连接</string>
+    <string name="login_title">提示</string>
+    <string name="activateObox_tips">修改obox密码</string>
+    <string name="input">请输入</string>
+    <string name="correct_pwd">的正确密码</string>
+
+    <string name="sure">确认</string>
+    <string name="input_8_tips">密码长度等于8个字母或数字</string>
+    <string name="cancel">取消</string>
+    <string name="photosensitive">光敏：</string>
+    <string name="water_immersion">水浸：</string>
+    <string name="radar">雷达：</string>
+    <string name="co">一氧化碳：</string>
+    <string name="simple">无条件</string>
+    <string name="search_tips">正在搜索。。。</string>
+    <string name="stop_search">停止扫面</string>
+    <string name="search_msg">若灯在此过程中未被扫描，请重复执行此过程，并保证灯被重新上电</string>
+    <string name="search_fal">打开搜索失败</string>
+    <string name="search_full">节点已满，搜索新设备失败</string>
+    <string name="single">设备</string>
+    <string name="group">组</string>
+    <string name="plus">+</string>
+    <string name="edit">编辑</string>
+    <string name="pst_node_move_can">节点位置可变更</string>
+    <string name="pst_node_move_can_not">节点位置不可变更</string>
+    <string name="draw_delete">删除</string>
+    <string name="draw_add">添加</string>
+    <string name="my_position">我的房间</string>
+
+
+</resources>

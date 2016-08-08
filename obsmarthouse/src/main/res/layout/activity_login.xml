@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--登陆界面-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/login_logo_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/big_margin"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/login_logo_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_logo_img"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/mid_margin"
+        android:text="@string/app_name"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/big_textsize" />
+
+
+    <android.support.v4.view.ViewPager
+        android:layout_below="@+id/login_logo_tv"
+        android:layout_marginTop="@dimen/mid_margin"
+        android:id="@+id/vp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </android.support.v4.view.ViewPager>
+    <TextView
+        android:id="@+id/login_declare"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/declare" />
+</RelativeLayout>

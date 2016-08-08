@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.ob.obsmarthouse.common.widget.TopTitle
+        android:id="@+id/position_frag_tt"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mid_content_h" />
+
+    <ListView
+        android:layout_below="@+id/position_frag_tt"
+        android:id="@+id/position_frag_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>

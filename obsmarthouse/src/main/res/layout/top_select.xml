@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--顶部选项卡-->
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/left_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/single"
+            android:background="@color/white"
+            android:textSize="@dimen/mid_textsize"
+            android:textColor="@color/blue"/>
+
+        <View
+            android:id="@+id/left_below_line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/mid_thin"
+            android:background="@color/blue"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/right_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="@string/group"
+            android:textSize="@dimen/mid_textsize"
+            android:textColor="@color/black"/>
+        <View
+            android:visibility="invisible"
+            android:id="@+id/right_below_line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/mid_thin"
+            android:background="@color/blue"
+            />
+    </LinearLayout>
+</LinearLayout>

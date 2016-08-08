@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--登陆选择组件-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:padding="@dimen/lit_padding">
+
+    <TextView
+        android:id="@+id/login_local_tv"
+        style="@style/mid_text_blue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_local" />
+
+    <TextView
+        style="@style/mid_text_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/mid_margin"
+        android:text="@string/login_cut" />
+
+    <TextView
+        android:id="@+id/login_cloud_tv"
+        style="@style/mid_text_blue"
+        android:layout_marginLeft="@dimen/mid_margin"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_cloud" />
+
+</LinearLayout>

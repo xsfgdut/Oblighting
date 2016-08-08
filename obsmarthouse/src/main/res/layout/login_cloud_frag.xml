@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--服务器登陆frag-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <include
+        android:id="@+id/cloud_account"
+        layout="@layout/input_common" />
+
+    <View
+        android:id="@+id/line1"
+        style="@style/thin_line"
+        android:layout_below="@+id/cloud_account" />
+
+    <include
+        android:id="@+id/cloud_pwd"
+        layout="@layout/input_common"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line1" />
+
+    <View
+        android:id="@+id/line2"
+        style="@style/thin_line"
+        android:layout_below="@+id/cloud_pwd" />
+
+    <Button
+        android:id="@+id/login_cloud_btn"
+        style="@style/login_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/mid_margin" />
+
+    <include
+        android:id="@+id/login_cloud_choose"
+        layout="@layout/login_choose"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/lit_margin"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/login_cloud_btn"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/common_paltform_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/mid_content_h"
+        android:layout_below="@+id/login_cloud_choose"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/mid_margin"
+        android:text="@string/login_cloud_use_open_account"
+        android:textSize="@dimen/lit_textsize" />
+
+    <include
+        android:id="@+id/login_cloud_common_platform"
+        layout="@layout/common_platform"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/common_paltform_tips"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_below="@+id/login_cloud_common_platform"
+        android:id="@+id/regist_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/mid_content_h"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/lit_margin"
+        android:text="@string/login_cloud_regist_tips"
+        android:textColor="@color/blue" />
+</RelativeLayout>

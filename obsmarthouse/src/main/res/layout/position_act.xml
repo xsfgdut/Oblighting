@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:dky="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.ob.obsmarthouse.common.widget.TopTitle
+        android:id="@+id/position_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mid_content_h"
+        dky:left_btn_src="@drawable/back"
+        dky:right_text_src="@string/edit"
+        dky:title_text="@string/login" />
+
+    <com.ob.obsmarthouse.common.widget.PositionView
+        android:id="@+id/position_position_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/position_title"
+        android:src="@drawable/preview_position_back1" />
+
+    <ImageView
+        android:id="@+id/position_act_tip_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="@dimen/lit_margin"
+        android:layout_marginLeft="@dimen/lit_margin"
+        android:src="@android:drawable/btn_star_big_on" />
+
+</RelativeLayout>
