@@ -60,8 +60,8 @@ public class TopSelect extends LinearLayout implements View.OnClickListener {
         }
     }
 
-    /**
-     * @param position
+    /**change show view on topbtnclick
+     * @param position {@link #LEFT,#RIGHT}
      */
     @SuppressWarnings("deprecation")
     public void onTopBtnClick(int position) {
