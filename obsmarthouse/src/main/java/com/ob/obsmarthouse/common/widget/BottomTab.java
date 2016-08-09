@@ -31,7 +31,6 @@ public class BottomTab extends LinearLayout implements View.OnClickListener {
 
     public BottomTab(Context context, AttributeSet attrs) {
         super(context, attrs);
-        // FIXME: 2016/8/4 设定垂直方式
         View view = LayoutInflater.from(context).inflate(R.layout.bootom_tab, (ViewGroup) getRootView());
         Tab tab1 = (Tab) view.findViewById(R.id.tab_one);
         tab1.setOnClickListener(this);

@@ -7,13 +7,11 @@ import android.widget.ImageView;
 
 import com.ob.obsmarthouse.R;
 import com.ob.obsmarthouse.common.base.BaseAct;
-import com.ob.obsmarthouse.common.bean.Position;
 import com.ob.obsmarthouse.common.bean.PositionNode;
 import com.ob.obsmarthouse.common.bean.cloudbean.DeviceConfig;
 import com.ob.obsmarthouse.common.bean.localbean.ObNode;
 import com.ob.obsmarthouse.common.constant.CloudConstant;
 import com.ob.obsmarthouse.common.constant.OBConstant;
-import com.ob.obsmarthouse.common.data.DataPool;
 import com.ob.obsmarthouse.common.widget.PositionView;
 import com.ob.obsmarthouse.common.widget.TopTitle;
 
@@ -158,7 +156,7 @@ public class PositionAct extends BaseAct {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(PositionAct.this, PositionView.class);
+                intent.setClass(PositionAct.this, PositionDetialShowAct.class);
                 startActivity(intent);
             }
         });

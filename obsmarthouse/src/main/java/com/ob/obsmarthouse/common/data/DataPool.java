@@ -17,6 +17,18 @@ import java.util.Map;
  */
 public class DataPool {
 
+    public static List<Position> getPositions() {
+        return positions;
+    }
+
+    public static void setPositions(List<Position> positions) {
+        DataPool.positions = positions;
+    }
+
+    /**
+     * position list along  user
+     */
+    private static List<Position> positions = new ArrayList<>();
     /**
      * 单节点数据总集，以obox序列号String为键，此键从Obox中获得
      */

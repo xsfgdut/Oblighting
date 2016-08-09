@@ -12,6 +12,8 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 import com.ob.obsmarthouse.R;
+import com.ob.obsmarthouse.common.adapter.DeviceBaseAdapter;
+import com.ob.obsmarthouse.common.adapter.cloudadapter.CloudDeviceFragAdapter;
 import com.ob.obsmarthouse.common.base.BaseFragment;
 import com.ob.obsmarthouse.common.bean.cloudbean.DeviceConfig;
 import com.ob.obsmarthouse.common.widget.TopTitle;
@@ -27,7 +29,7 @@ public class DeviceFragment extends BaseFragment {
     private TopTitle topTitle;
     private ImageView imageView;
     private GridView gridLayout;
-
+    private DeviceBaseAdapter deviceBaseAdapter;
     @SuppressLint("ValidFragment")
     private DeviceFragment() {
     }
@@ -55,7 +57,8 @@ public class DeviceFragment extends BaseFragment {
         //noinspection deprecation
         imageView.setBackgroundDrawable(getResources().getDrawable(R.drawable.device_frag_top_bg));
         gridLayout = (GridView) view.findViewById(R.id.device_frag_gv);
-
+        deviceBaseAdapter = new CloudDeviceFragAdapter(getActivity());
+        gridLayout.setAdapter(deviceBaseAdapter);
     }
 
     @Override

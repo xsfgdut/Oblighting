@@ -106,7 +106,7 @@ public class ShowNodeAct extends BaseAct {
 
     @Override
     protected void findView(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_control);
+        setContentView(R.layout.show_node_act);
         findView();
         addLsn();
     }

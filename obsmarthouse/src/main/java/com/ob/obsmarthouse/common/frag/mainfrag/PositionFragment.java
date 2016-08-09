@@ -36,7 +36,6 @@ public class PositionFragment extends BaseFragment {
     private static final String TAG = "PositionFragment";
     private TopTitle topTitle;
     private ListView listView;
-    private List<Position> positions;
     private BasePositionAdapter basePositionAdapter;
     private static PositionFragment positionFragment;
 
@@ -108,11 +107,10 @@ public class PositionFragment extends BaseFragment {
     }
 
     private void initPositionData() {
-        positions = new ArrayList<>();
         Position position = new Position();
         position.setName(getString(R.string.my_position));
-        positions.add(position);
-        basePositionAdapter = new CloudBasePositionAdapter(getActivity(), positions);
+        DataPool.getPositions().add(position);
+        basePositionAdapter = new CloudBasePositionAdapter(getActivity(), DataPool.getPositions());
     }
 
 
@@ -135,18 +133,11 @@ public class PositionFragment extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent();
-                DataPool.setPosition(positions.get(position));
+                DataPool.setPosition(DataPool.getPositions().get(position));
                 intent.setClass(getActivity(), PositionAct.class);
                 startActivity(intent);
             }
         });
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (DataPool.getPosition()!=null) {
-            Log.d(TAG, DataPool.getPosition().getName());
-        }
-    }
 }

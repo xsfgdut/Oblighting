@@ -60,8 +60,11 @@ public class TopSelect extends LinearLayout implements View.OnClickListener {
         }
     }
 
+    /**
+     * @param position
+     */
     @SuppressWarnings("deprecation")
-    private void onTopBtnClick(int position) {
+    public void onTopBtnClick(int position) {
         boolean isSingle = position == LEFT;
         leftBtn.setTextColor(isSingle ? getResources().getColor(R.color.blue) : getResources().getColor(R.color.black));
         rightBtn.setTextColor(isSingle ? getResources().getColor(R.color.black) : getResources().getColor(R.color.blue));

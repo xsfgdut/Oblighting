@@ -1,41 +1,27 @@
-package com.ob.obsmarthouse.common.frag.mainfrag;
+package com.ob.obsmarthouse.common.frag.positionfrag;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListView;
 
 import com.ob.obsmarthouse.R;
+import com.ob.obsmarthouse.common.adapter.BasePositionNodeAdapter;
 import com.ob.obsmarthouse.common.base.BaseFragment;
 
-/**我的页面frag
- * Created by adolf_dong on 2016/5/5.
+/** show all nodes in position ,not only type
+ * Created by adolf_dong on 2016/8/9.
  */
-public class MyFragment extends BaseFragment {
+public class PositionNodeFrag extends BaseFragment {
 
-    private static final String TAG = "MyFragment";
-    
-    private static MyFragment myFragment;
-    @SuppressLint("ValidFragment")
-    private MyFragment() {
-
-    }
-    public static MyFragment instance() {
-        synchronized (MyFragment.class){
-            if (myFragment == null) {
-                myFragment = new MyFragment();
-            }
-        }
-        return myFragment;
-    }
-
+    private ExpandableListView expandableListView;
+    private BasePositionNodeAdapter basePositionNodeAdapter;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.my_frag,container,false);
+        return inflater.inflate(R.layout.position_node_frag,container,false);
     }
 
     @Override
@@ -63,15 +49,13 @@ public class MyFragment extends BaseFragment {
 
     }
 
-
     @Override
     protected void onGuest() {
 
     }
 
-
     @Override
     protected void findView(View view, Bundle savedInstanceState) {
-
+        expandableListView = (ExpandableListView) view.findViewById(R.id.position_scene_frag_explv);
     }
 }

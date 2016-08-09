@@ -38,10 +38,8 @@ public abstract class BaseFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         findView(view, savedInstanceState);
-        Log.d(TAG, "" + TAG);
         switch (getWorkMode()) {
             case OBConstant.NetState.ON_AP:
-
                 // FIXME: 2016/7/12 ap模式和station模式统一处理
 //                onApMode(view,savedInstanceState);
 //                break;
