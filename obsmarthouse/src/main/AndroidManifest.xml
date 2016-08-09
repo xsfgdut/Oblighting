@@ -49,6 +49,9 @@
         <activity
             android:name=".common.act.CtrlLampAct"
             >
+        </activity><activity
+            android:name=".common.act.PositionDetialShowAct"
+            >
         </activity>
 
     </application>
