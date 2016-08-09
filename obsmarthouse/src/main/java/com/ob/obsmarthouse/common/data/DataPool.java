@@ -1,6 +1,8 @@
 package com.ob.obsmarthouse.common.data;
 
 import com.ob.obsmarthouse.common.bean.Position;
+import com.ob.obsmarthouse.common.bean.cloudbean.CloudScene;
+import com.ob.obsmarthouse.common.bean.cloudbean.DeviceConfig;
 import com.ob.obsmarthouse.common.bean.cloudbean.Obox;
 import com.ob.obsmarthouse.common.bean.localbean.ObGroup;
 import com.ob.obsmarthouse.common.bean.localbean.ObNode;
@@ -25,6 +27,16 @@ public class DataPool {
         DataPool.positions = positions;
     }
 
+
+    /**
+     * cloud device Lists in position
+     */
+    private static List<List<DeviceConfig>> positionDevices = new ArrayList<>();
+
+    /**
+     * cloud scene lists in position
+     */
+    private static List<CloudScene> cloudSceneInPositionList = new ArrayList<>();
     /**
      * position list along  user
      */
@@ -146,4 +158,19 @@ public class DataPool {
         return scenes;
     }
 
+    public static void setPositionDevices(List<List<DeviceConfig>> positionDevices) {
+        DataPool.positionDevices = positionDevices;
+    }
+
+    public static List<List<DeviceConfig>> getPositionDevices() {
+        return positionDevices;
+    }
+
+    public static List<CloudScene> getCloudSceneInPositionList() {
+        return cloudSceneInPositionList;
+    }
+
+    public static void setCloudSceneInPositionList(List<CloudScene> cloudSceneInPositionList) {
+        DataPool.cloudSceneInPositionList = cloudSceneInPositionList;
+    }
 }
