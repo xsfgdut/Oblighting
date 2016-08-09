@@ -3,29 +3,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_vertical"
     android:orientation="horizontal">
 
     <com.ob.obsmarthouse.common.widget.Tab
         android:id="@+id/tab_one"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1" />
 
     <com.ob.obsmarthouse.common.widget.Tab
         android:id="@+id/tab_two"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1" />
 
     <com.ob.obsmarthouse.common.widget.Tab
         android:id="@+id/tab_three"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1" />
 
     <com.ob.obsmarthouse.common.widget.Tab
         android:id="@+id/tab_four"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1" />
 </LinearLayout>

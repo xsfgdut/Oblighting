@@ -46,5 +46,14 @@
     <string name="creat">创建</string>
     <string name="my">我的</string>
 
+    <string name="lamp">灯光</string>
+    <string name="sensor">传感器</string>
+    <string name="wind_curtain">窗帘</string>
+    <string name="obox">智能网关</string>
+    <string name="curtain">幕布</string>
+    <string name="socket">插座</string>
+    <string name="air_con">空调</string>
+    <string name="add_scene">添加场景</string>
+
 
 </resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--devicefrag's gridview_itemView-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/device_frag_gridview_num_tv"
+        android:layout_marginTop="@dimen/lit_margin"
+        android:layout_marginRight="@dimen/lit_margin"
+        android:layout_width="@dimen/super_lit_content_w"
+        android:layout_height="@dimen/super_lit_content_h"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/circular"
+        android:gravity="center"
+        android:textSize="@dimen/lit_textsize"
+        android:textColor="@color/white"
+        tools:ignore="RtlHardcoded" />
+
+    <ImageView
+        android:id="@+id/device_frag_gridview_iv"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="ContentDescription" />
+    <TextView
+        android:id="@+id/device_frag_gridview_ndoetype_tv"
+        android:layout_below="@+id/device_frag_gridview_iv"
+        android:textSize="@dimen/mid_textsize"
+        android:layout_marginTop="@dimen/mid_margin"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

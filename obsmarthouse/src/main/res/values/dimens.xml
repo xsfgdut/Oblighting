@@ -3,6 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <!--margin-->
+    <dimen name="super_lit_margin">6dp</dimen>
     <dimen name="lit_margin">16dp</dimen>
     <dimen name="mid_margin">30dp</dimen>
     <dimen name="big_margin">50dp</dimen>
@@ -13,10 +14,12 @@
     <dimen name="mid_padding">10dp</dimen>
     <dimen name="big_padding">15dp</dimen>
     <!--控件高度-->
+    <dimen name="super_lit_content_h">18dp</dimen>
     <dimen name="lit_content_h">40dp</dimen>
     <dimen name="mid_content_h">60dp</dimen>
     <dimen name="big_content_h">80dp</dimen>
     <!--控件宽度-->
+    <dimen name="super_lit_content_w">18dp</dimen>
     <dimen name="lit_content_w">50dp</dimen>
     <dimen name="mid_content_w">100dp</dimen>
     <dimen name="big_content_w">200dp</dimen>
@@ -29,6 +32,7 @@
 
     <dimen name="thin">1dp</dimen>
     <dimen name="mid_thin">3dp</dimen>
+    <dimen name="circle_radius">200dp</dimen>
 
 
 </resources>

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--主页面-->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
     <com.ob.obsmarthouse.common.widget.CustomViewPager
         android:id="@+id/main_act_vp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_weight="1"
+        android:layout_height="0dp" />
     <com.ob.obsmarthouse.common.widget.BottomTab
         android:id="@+id/main_act_bottomtab"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="@dimen/mid_content_h"/>
-</RelativeLayout>
+</LinearLayout>
