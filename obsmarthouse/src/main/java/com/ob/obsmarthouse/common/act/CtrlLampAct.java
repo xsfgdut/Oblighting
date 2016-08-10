@@ -11,7 +11,7 @@ import com.ob.obsmarthouse.common.base.BaseAct;
 public class CtrlLampAct extends BaseAct {
     @Override
     protected void findView(Bundle savedInstanceState) {
-        setContentView(R.layout.show_node_act);
+        setContentView(R.layout.ctrllamp_act);
     }
 
     @Override

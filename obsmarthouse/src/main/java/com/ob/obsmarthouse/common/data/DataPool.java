@@ -29,9 +29,18 @@ public class DataPool {
 
 
     /**
-     * cloud device Lists in position
+     * 服务器位置相关节点类型组数据
      */
-    private static List<List<DeviceConfig>> positionDevices = new ArrayList<>();
+    private static List<List<DeviceConfig>> positionDeviceList = new ArrayList<>();
+
+    /**
+     * 服务器当前组数据
+     */
+    private static List<List<DeviceConfig>> devicesList = new ArrayList<>();
+    /**
+     * 服务器当前单节点数据
+     */
+    private static List<DeviceConfig> devices = new ArrayList<>();
 
     /**
      * cloud scene lists in position
@@ -138,6 +147,11 @@ public class DataPool {
     }
 
     /**
+     * 指向当前被选中DeviceConfig
+     */
+    private static DeviceConfig deviceConfig;
+
+    /**
      * 获取当前选定obox的所有节点数据
      */
     public static List<ObNode> getAllNodes() {
@@ -158,12 +172,12 @@ public class DataPool {
         return scenes;
     }
 
-    public static void setPositionDevices(List<List<DeviceConfig>> positionDevices) {
-        DataPool.positionDevices = positionDevices;
+    public static void setPositionDeviceList(List<List<DeviceConfig>> positionDeviceList) {
+        DataPool.positionDeviceList = positionDeviceList;
     }
 
-    public static List<List<DeviceConfig>> getPositionDevices() {
-        return positionDevices;
+    public static List<List<DeviceConfig>> getPositionDeviceList() {
+        return positionDeviceList;
     }
 
     public static List<CloudScene> getCloudSceneInPositionList() {
@@ -173,4 +187,44 @@ public class DataPool {
     public static void setCloudSceneInPositionList(List<CloudScene> cloudSceneInPositionList) {
         DataPool.cloudSceneInPositionList = cloudSceneInPositionList;
     }
+
+    public static DeviceConfig getDeviceConfig() {
+        return deviceConfig;
+    }
+
+    public static void setDeviceConfig(DeviceConfig deviceConfig) {
+        DataPool.deviceConfig = deviceConfig;
+    }
+
+    public static List<DeviceConfig> getDevices() {
+        return devices;
+    }
+
+    public static void setDevices(List<DeviceConfig> devices) {
+        DataPool.devices = devices;
+    }
+
+    public static List<List<DeviceConfig>> getDevicesList() {
+        return devicesList;
+    }
+
+    public static void setDevicesList(List<List<DeviceConfig>> devicesList) {
+        DataPool.devicesList = devicesList;
+    }
+
+    /** 根据类型取节点
+     * @param nodeType 类型值
+     */
+    public static List<DeviceConfig> getDevicesForType(int nodeType) {
+        List<DeviceConfig> deviceConfigs = new ArrayList<>();
+        for (int i = 0; i < deviceConfigs.size(); i++) {
+            DeviceConfig deviceConfig = deviceConfigs.get(i);
+            int type = Integer.parseInt(deviceConfig.getDevice_type(), 16);
+            if (type == nodeType) {
+                deviceConfigs.add(deviceConfig);
+            }
+        }
+        return deviceConfigs;
+    }
+
 }

@@ -28,6 +28,21 @@ public class LocalPositionNodeAdapter extends BasePositionNodeAdapter {
     }
 
     @Override
+    protected CharSequence onSetRightText(int groupPosition, int childPosition) {
+        return null;
+    }
+
+    @Override
+    protected CharSequence onSetLeftText(int groupPosition, int childPosition) {
+        return null;
+    }
+
+    @Override
+    protected boolean onSetChildScroolMode(int groupPosition, int childPosition) {
+        return false;
+    }
+
+    @Override
     protected CharSequence onSetDetailId(int groupPosition, int childPosition) {
         return null;
     }

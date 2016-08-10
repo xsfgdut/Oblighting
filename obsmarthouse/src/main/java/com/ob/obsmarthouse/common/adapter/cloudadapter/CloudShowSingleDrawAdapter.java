@@ -10,13 +10,13 @@ import com.ob.obsmarthouse.common.constant.OBConstant;
 
 import java.util.List;
 
-/**服务器控制页面显示适配器
+/**服务器控制页面显示适配器,适配器通用，在frag中实现差异化
  * Created by adolf_dong on 2016/7/19.
  */
-public class CloudControlDrawAdapter extends DrawBaseAdapter{
+public class CloudShowSingleDrawAdapter extends DrawBaseAdapter{
     private List<DeviceConfig> deviceConfigs;
 
-    public CloudControlDrawAdapter(Context context,List<DeviceConfig> deviceConfigs) {
+    public CloudShowSingleDrawAdapter(Context context, List<DeviceConfig> deviceConfigs) {
         super(context);
         this.deviceConfigs = deviceConfigs;
     }

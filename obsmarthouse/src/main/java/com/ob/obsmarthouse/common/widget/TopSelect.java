@@ -1,6 +1,7 @@
 package com.ob.obsmarthouse.common.widget;
 
 import android.content.Context;
+import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,7 @@ import android.widget.LinearLayout;
 import com.ob.obsmarthouse.R;
 
 /**
- * 选择viewPager显示选项
+ * 选择viewPager显示选项,实现了viewpager显示管理
  * Created by adolf_dong on 2016/7/15.
  */
 public class TopSelect extends LinearLayout implements View.OnClickListener {
@@ -27,7 +28,7 @@ public class TopSelect extends LinearLayout implements View.OnClickListener {
 
     private LeftClick leftClick;
     private RightClick rightClick;
-
+    private ViewPager viewPager;
     public TopSelect(Context context, AttributeSet attrs) {
         super(context, attrs);
         View rootView = LayoutInflater.from(context).inflate(R.layout.top_select, (ViewGroup) getRootView());
@@ -45,12 +46,18 @@ public class TopSelect extends LinearLayout implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.left_btn:
                 onTopBtnClick(LEFT);
+                if (viewPager != null) {
+                    viewPager.setCurrentItem(LEFT);
+                }
                 if (leftClick != null) {
                     leftClick.leftClick();
                 }
                 break;
             case R.id.right_btn:
                 onTopBtnClick(RIGHT);
+                if (viewPager != null) {
+                    viewPager.setCurrentItem(RIGHT);
+                }
                 if (rightClick != null) {
                     rightClick.rightClick();
                 }
@@ -96,6 +103,10 @@ public class TopSelect extends LinearLayout implements View.OnClickListener {
      */
     public void setRightClick(RightClick rightClick) {
         this.rightClick = rightClick;
+    }
+
+    public void setViewPager(ViewPager viewPager) {
+        this.viewPager = viewPager;
     }
 
     /**

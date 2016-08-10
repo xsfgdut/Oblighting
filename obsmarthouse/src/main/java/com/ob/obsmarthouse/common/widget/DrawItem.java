@@ -11,6 +11,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
+import android.widget.ListView;
 
 /**
  * 滑动删除控件
@@ -168,6 +169,15 @@ public class DrawItem extends FrameLayout {
         ViewParent vp = getParent().getParent();
         if (vp instanceof ScorllListView) {
             ScorllListView sl = (ScorllListView) vp;
+            int position = sl.getPositionForView((View) getParent());
+            if (!isScroll) {
+                sl.performItemClick(sl.getChildAt(position - sl.getFirstVisiblePosition()), position,
+                        sl.getAdapter().getItemId(position));
+            } else {
+                close();
+            }
+        }else{
+            ListView sl = (ListView) vp;
             int position = sl.getPositionForView((View) getParent());
             if (!isScroll) {
                 sl.performItemClick(sl.getChildAt(position - sl.getFirstVisiblePosition()), position,

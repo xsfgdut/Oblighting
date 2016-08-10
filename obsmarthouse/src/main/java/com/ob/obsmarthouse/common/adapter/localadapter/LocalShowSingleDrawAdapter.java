@@ -13,10 +13,10 @@ import java.util.List;
  * 本地模式控制页面显示滑动适配器
  * Created by adolf_dong on 2016/7/19.
  */
-public class LocalControlDrawAdapter extends DrawBaseAdapter {
+public class LocalShowSingleDrawAdapter extends DrawBaseAdapter {
     private List<ObNode> obNodes;
 
-    public LocalControlDrawAdapter(Context context, List<ObNode> obNodes) {
+    public LocalShowSingleDrawAdapter(Context context, List<ObNode> obNodes) {
         super(context);
         this.obNodes = obNodes;
     }

@@ -63,6 +63,21 @@ public class ClouPositionNodeAdapter extends BasePositionNodeAdapter {
     }
 
     @Override
+    protected CharSequence onSetRightText(int groupPosition, int childPosition) {
+        return context.getString(R.string.pst_node_move_can_not);
+    }
+
+    @Override
+    protected CharSequence onSetLeftText(int groupPosition, int childPosition) {
+        return context.getString(R.string.cancel);
+    }
+
+    @Override
+    protected boolean onSetChildScroolMode(int groupPosition, int childPosition) {
+        return false;
+    }
+
+    @Override
     protected CharSequence onSetDetailId(int groupPosition, int childPosition) {
         return deviceList.get(groupPosition).get(childPosition).getID();
     }
