@@ -34,6 +34,7 @@ public class PositionAct extends BaseAct {
         positionView = (PositionView) findViewById(R.id.position_position_view);
         tipImg = (ImageView) findViewById(R.id.position_act_tip_img);
         topTitle = (TopTitle) findViewById(R.id.position_title);
+
     }
 
     /**
@@ -75,6 +76,7 @@ public class PositionAct extends BaseAct {
                             intent.setClass(PositionAct.this, CtrlLampAct.class);
                             break;
                     }
+                    startActivity(intent);
                 }
 
             }

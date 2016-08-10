@@ -8,7 +8,6 @@ import com.ob.obsmarthouse.common.adapter.DynamicPagerAdapter;
 import com.ob.obsmarthouse.common.base.BaseAct;
 import com.ob.obsmarthouse.common.frag.positionfrag.PositionNodeFrag;
 import com.ob.obsmarthouse.common.frag.positionfrag.PositionSceneFrag;
-import com.ob.obsmarthouse.common.lsn.BasePageChangeListener;
 import com.ob.obsmarthouse.common.widget.TopSelect;
 import com.ob.obsmarthouse.common.widget.TopTitle;
 
@@ -21,7 +20,6 @@ public class PositionDetialShowAct extends BaseAct {
     private TopSelect topSelect;
     private ViewPager viewPager;
     private DynamicPagerAdapter dynamicPagerAdapter;
-    private BasePageChangeListener basePageChangeListener;
 
     @Override
     protected void findView(Bundle savedInstanceState) {
@@ -39,15 +37,13 @@ public class PositionDetialShowAct extends BaseAct {
         dynamicPagerAdapter.addFrag(new PositionSceneFrag());
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         viewPager.setAdapter(dynamicPagerAdapter);
-        basePageChangeListener = new BasePageChangeListener(topSelect);
-        basePageChangeListener.setOnPageSelectedLsn(new BasePageChangeListener.OnPageSelectedLsn() {
+        topSelect.setViewPager(viewPager);
+        topSelect.setOnPageSelectedLsn(new TopSelect.OnPageSelectedLsn() {
             @Override
             public void onPageSelected(int position) {
                 topTitle.setTopBtnVisible(TopTitle.RIGHT_POSITION, position == TopSelect.RIGHT);
             }
         });
-        viewPager.addOnPageChangeListener(basePageChangeListener);
-        topSelect.setViewPager(viewPager);
         topSelect.setLeftClick(new TopSelect.LeftClick() {
             @Override
             public void leftClick() {

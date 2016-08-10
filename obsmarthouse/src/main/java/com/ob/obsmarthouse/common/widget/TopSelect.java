@@ -29,6 +29,7 @@ public class TopSelect extends LinearLayout implements View.OnClickListener {
     private LeftClick leftClick;
     private RightClick rightClick;
     private ViewPager viewPager;
+
     public TopSelect(Context context, AttributeSet attrs) {
         super(context, attrs);
         View rootView = LayoutInflater.from(context).inflate(R.layout.top_select, (ViewGroup) getRootView());
@@ -67,7 +68,9 @@ public class TopSelect extends LinearLayout implements View.OnClickListener {
         }
     }
 
-    /**change show view on topbtnclick
+    /**
+     * change show view on topbtnclick
+     *
      * @param position {@link #LEFT,#RIGHT}
      */
     @SuppressWarnings("deprecation")
@@ -79,18 +82,21 @@ public class TopSelect extends LinearLayout implements View.OnClickListener {
         rightBelowLine.setVisibility(isSingle ? View.INVISIBLE : View.VISIBLE);
     }
 
-    /**设置两个按钮的显示文字，null则不改变
-     * @param leftText 左边文字
+    /**
+     * 设置两个按钮的显示文字，null则不改变
+     *
+     * @param leftText  左边文字
      * @param rightText 右边文字
      */
-    public void setParameter(String leftText,String rightText) {
-        if (leftText!=null) {
+    public void setParameter(String leftText, String rightText) {
+        if (leftText != null) {
             leftBtn.setText(leftText);
         }
-        if (rightText!=null) {
+        if (rightText != null) {
             rightBtn.setText(rightText);
         }
     }
+
     /**
      * 设置左边点击按钮点击事件
      */
@@ -107,8 +113,33 @@ public class TopSelect extends LinearLayout implements View.OnClickListener {
 
     public void setViewPager(ViewPager viewPager) {
         this.viewPager = viewPager;
-    }
+        this.viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                TopSelect.this.onTopBtnClick(position);
+                if (onPageSelectedLsn != null) {
+                    onPageSelectedLsn.onPageSelected(position);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+    public void setOnPageSelectedLsn(OnPageSelectedLsn onPageSelectedLsn) {
+        this.onPageSelectedLsn = onPageSelectedLsn;
+    }
+    public interface OnPageSelectedLsn {
+        void onPageSelected(int position);
+    }
+    private OnPageSelectedLsn onPageSelectedLsn;
     /**
      * 左边点选
      */

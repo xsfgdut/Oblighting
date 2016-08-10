@@ -54,6 +54,8 @@
     <string name="socket">插座</string>
     <string name="air_con">空调</string>
     <string name="add_scene">添加场景</string>
+    <string name="custom_ctrl_lamp">自定义</string>
+    <string name="classcial_ctrl_lamp">经典</string>
 
 
 </resources>

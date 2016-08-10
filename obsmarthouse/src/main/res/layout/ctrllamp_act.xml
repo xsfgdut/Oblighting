@@ -14,15 +14,15 @@
         dky:right_text_src="@string/login"
         dky:title_text="@string/login"
         />
-
+<!--待替换-->
     <com.ob.obsmarthouse.common.widget.TopSelect
-        android:id="@+id/top_select"
+        android:id="@+id/ctrl_lamp_top_select"
         android:layout_width="match_parent"
         android:layout_height="60dp" />
 
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
+        android:id="@+id/ctrl_lamp_viewpager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

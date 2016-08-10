@@ -56,4 +56,3 @@ task
 数据池添加位置和情景信息，数据池保持对目前操作对象的引用，便于数据同步 Y
 控制灯页面实现 N
 
-wanchengyoucedianji

@@ -9,6 +9,7 @@ import com.ob.obsmarthouse.common.widget.TopTitle;
 /**实现了对TopSelect的视图控制
  * Created by adolf_dong on 2016/8/10.
  */
+@Deprecated
 public class BasePageChangeListener implements ViewPager.OnPageChangeListener {
     private TopSelect topSelect;
     private OnPageSelectedLsn onPageSelectedLsn;

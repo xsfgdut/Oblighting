@@ -81,6 +81,7 @@ public abstract class BasePositionNodeAdapter extends BaseExpandableListAdapter 
         viewHolder.lefTv.setOnClickListener(new OnChildLeftClickLsn(groupPosition, childPosition));
         viewHolder.rightTv = (TextView) convertView.findViewById(R.id.hint_right_tv);
         viewHolder.rightTv.setText(onSetRightText(groupPosition, childPosition));
+        viewHolder.rightTv.setOnClickListener(new OnChildRightClickLsn(groupPosition, childPosition));
         viewHolder.drawItem = (DrawItem) convertView.findViewById(R.id.drawitem);
         viewHolder.drawItem.setScroolMode(onSetChildScroolMode(groupPosition, childPosition));
         ImageView icon = (ImageView) viewHolder.drawItem.findViewById(R.id.draw_icon);
@@ -105,6 +106,9 @@ public abstract class BasePositionNodeAdapter extends BaseExpandableListAdapter 
         return true;
     }
 
+    public void setChildRightClickLsn(ChildRightClickLsn childRightClickLsn) {
+        this.childRightClickLsn = childRightClickLsn;
+    }
 
 
     class GroupViewHolder {
@@ -123,6 +127,7 @@ public abstract class BasePositionNodeAdapter extends BaseExpandableListAdapter 
     public void setChildLeftClickLsn(ChildLeftClickLsn childLeftClickLsn) {
         this.childLeftClickLsn = childLeftClickLsn;
     }
+
     public interface ChildLeftClickLsn {
         void OnChildLeftClick(int groupPosition, int childPosition);
     }
@@ -144,5 +149,29 @@ public abstract class BasePositionNodeAdapter extends BaseExpandableListAdapter 
                 childLeftClickLsn.OnChildLeftClick(groupPosition, childPosition);
             }
         }
+    }
+
+    private ChildRightClickLsn childRightClickLsn;
+    private class OnChildRightClickLsn implements View.OnClickListener {
+        private int groupPosition;
+        private int childPosition;
+
+        public OnChildRightClickLsn(int groupPosition, int childPosition) {
+            this.groupPosition = groupPosition;
+            this.childPosition = childPosition;
+        }
+
+        @Override
+        public void onClick(View v) {
+
+            if (childRightClickLsn != null) {
+                childRightClickLsn.OnChildRightClick(groupPosition, childPosition);
+            }
+        }
+    }
+
+    private interface ChildRightClickLsn {
+
+        void OnChildRightClick(int groupPosition, int childPosition);
     }
 }
