@@ -36,4 +36,14 @@
     <color name="org_list_item_n">#fff8f7f8</color>
     <color name="org_list_item_s">#ff51abff</color>
     <color name="org_list_item_divider2">#ffdfdedf</color>
+    <color name="h_red">#ff2d2d</color>
+    <color name="m_red">#f63d4e</color>
+    <color name="l_red">#ff6d6d</color>
+    <color name="h_green">#21d131</color>
+    <color name="m_green">#a2ff48</color>
+    <color name="l_green">#1dff32</color>
+    <color name="h_blue">#399bff</color>
+    <color name="m_blue">#5096ff</color>
+    <color name="l_blue">#44bbff</color>
+
 </resources>

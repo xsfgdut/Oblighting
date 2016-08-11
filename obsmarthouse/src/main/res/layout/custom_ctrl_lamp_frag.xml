@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?><!--自定义控制灯页面-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.ob.obsmarthouse.common.widget.ColorLampSettingPanel
+        android:id="@+id/custom_ctrl_panel"
+        android:layout_centerHorizontal="true"
+        android:layout_width="@dimen/super_big_content_w"
+        android:layout_height="@dimen/super_big_content_w" />
+
+    <com.ob.obsmarthouse.common.widget.SwitchButtonOfBule
+        android:id="@+id/custom_ctrl_sb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/custom_ctrl_panel"
+        android:layout_marginRight="@dimen/mid_margin"
+        android:layout_marginTop="@dimen/mid_margin" />
+
+    <ImageView
+        android:id="@+id/custom_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/light"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="@dimen/mid_margin" />
+
+    <SeekBar
+        android:id="@+id/custom_ctrl_seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:progressDrawable="@drawable/ctrl_light_pro"
+        android:thumb="@drawable/lamp_light_thumb"
+        android:layout_marginBottom="@dimen/mid_margin"
+        android:layout_toRightOf="@+id/custom_light" />
+
+</RelativeLayout>

@@ -18,11 +18,13 @@
     <dimen name="lit_content_h">40dp</dimen>
     <dimen name="mid_content_h">60dp</dimen>
     <dimen name="big_content_h">80dp</dimen>
+    <dimen name="super_big_content_h">400dp</dimen>
     <!--控件宽度-->
     <dimen name="super_lit_content_w">18dp</dimen>
     <dimen name="lit_content_w">50dp</dimen>
     <dimen name="mid_content_w">100dp</dimen>
     <dimen name="big_content_w">200dp</dimen>
+    <dimen name="super_big_content_w">300dp</dimen>
     <!--字体数据-->
     <dimen name="lit_textsize">15sp</dimen>
     <dimen name="mid_textsize">18sp</dimen>

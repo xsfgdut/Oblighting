@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?><!--经典调色gridview item-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/ctrl_lamp_gv_img"
+        android:layout_centerHorizontal="true"
+        android:layout_width="@dimen/mid_content_w"
+        android:layout_height="@dimen/mid_content_w" />
+
+    <TextView
+        android:id="@+id/ctrl_lamp_gv_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ctrl_lamp_gv_img"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/mid_margin"
+        android:textSize="@dimen/mid_textsize" />
+
+</RelativeLayout>

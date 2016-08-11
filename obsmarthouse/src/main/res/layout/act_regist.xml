@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/main_title"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:background="@color/title_bg">
+
+
+        <ImageView
+            android:id="@+id/setting_title_btn"
+            android:layout_width="@dimen/edit_h"
+            android:layout_height="@dimen/edit_h"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/small_padding"
+            android:src="@mipmap/back"
+            />
+
+
+        <TextView
+            android:id="@+id/activate_title_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/regi"
+            android:textSize="@dimen/big_text_size"
+            android:textColor="@color/white" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/regist_input_border"
+        android:layout_width="@dimen/regist_w"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/big_padding"
+        android:background="@drawable/regist_border">
+
+        <include
+            android:id="@+id/regist_id"
+            style="@style/toosmall"
+            layout="@layout/regist_iput_common" />
+
+        <View
+            android:id="@+id/line_1"
+            android:layout_width="wrap_content"
+            android:layout_height="1px"
+            android:layout_below="@+id/regist_id"
+            android:layout_marginTop="@dimen/mid_padding"
+            android:background="@color/gray" />
+
+        <include
+            android:id="@+id/regist_psw"
+            style="@style/small"
+            layout="@layout/regist_iput_common"
+            android:layout_below="@+id/line_1" />
+
+        <!--<View-->
+        <!--android:id="@+id/line_2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="1px"-->
+        <!--android:layout_below="@+id/regist_psw"-->
+        <!--android:layout_marginTop="@dimen/mid_padding"-->
+        <!--android:background="@color/gray" />-->
+
+        <!--<include-->
+        <!--android:id="@+id/regist_code"-->
+        <!--style="@style/small"-->
+        <!--layout="@layout/regist_iput_common"-->
+        <!--android:layout_below="@+id/line_2" />-->
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/activate_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/regist_input_border"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/big_padding"
+        android:background="@drawable/bth"
+        android:text="@string/sure"
+        android:textColor="@color/white"
+        android:textSize="@dimen/mid_textsize" />
+
+</RelativeLayout>

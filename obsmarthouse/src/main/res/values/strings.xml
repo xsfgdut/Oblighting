@@ -56,6 +56,20 @@
     <string name="add_scene">添加场景</string>
     <string name="custom_ctrl_lamp">自定义</string>
     <string name="classcial_ctrl_lamp">经典</string>
+    <string name="yzsg">银装素裹</string>
+    <string name="wlhy">蔚蓝海洋</string>
+    <string name="xxcs">喧嚣城市</string>
+    <string name="xyxx">夕阳西下</string>
+    <string name="zrqx">自然清新</string>
+    <string name="qsnh">青涩年华</string>
+    <string name="dhjl">灯红酒绿</string>
+    <string name="jgss">激情四射</string>
+    <string name="prxd">怦然心动</string>
+    <string name="wait">请稍后</string>
+    <string name="on_logtin">正在登陆。。。</string>
+    <string name="can_not_empty_input">输入不能为空</string>
+    <string name="regi_suc">注册成功</string>
+    <string name="regi_fal">注册失败</string>
 
 
 </resources>
