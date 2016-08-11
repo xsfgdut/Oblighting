@@ -1,11 +1,10 @@
 package com.ob.obsmarthouse.common.frag.loginfrag;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Message;
 import android.support.annotation.Nullable;
+import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +15,15 @@ import android.widget.TextView;
 
 import com.ob.obsmarthouse.R;
 import com.ob.obsmarthouse.common.act.MainAct;
-import com.ob.obsmarthouse.common.net.cloudnet.HttpRespond;
 import com.ob.obsmarthouse.common.base.BaseFragment;
+import com.ob.obsmarthouse.common.constant.CloudConstant;
+import com.ob.obsmarthouse.common.constant.OBConstant;
 import com.ob.obsmarthouse.common.lsn.ChangeModeLSN;
-import com.ob.obsmarthouse.common.net.localnet.Respond;
+import com.ob.obsmarthouse.common.net.cloudnet.GetParameter;
+import com.ob.obsmarthouse.common.net.cloudnet.HttpRespond;
+import com.ob.obsmarthouse.common.share.Share;
+import com.ob.obsmarthouse.common.util.CloudParseUtil;
+import com.ob.obsmarthouse.common.util.NetUtil;
 
 import org.apache.http.NameValuePair;
 
@@ -29,23 +33,7 @@ import java.util.List;
  * 登录界面远程登录
  * Created by adolf_dong on 2016/6/3.
  */
-public class CloudFrg extends BaseFragment implements Respond,HttpRespond{
-    /**
-     * 账户图片
-     */
-    private ImageView accountIv;
-    /**
-     * 密码图片
-     */
-    private ImageView pwdIv;
-    /**
-     * 账户文字
-     */
-    private TextView accoutTv;
-    /**
-     * 密码文字
-     */
-    private TextView pwdTv;
+public class CloudFrg extends BaseFragment implements HttpRespond {
     /**
      * 账户编辑
      */
@@ -110,12 +98,27 @@ public class CloudFrg extends BaseFragment implements Respond,HttpRespond{
     @SuppressWarnings("deprecation")
     @Override
     protected void findView(View view, Bundle savedInstanceState) {
-        accountIv = (ImageView) view.findViewById(R.id.cloud_account).findViewById(R.id.img);
-        accoutTv = (TextView) view.findViewById(R.id.cloud_account).findViewById(R.id.hint_tv);
+        /*
+      账户图片
+     */
+        ImageView accountIv = (ImageView) view.findViewById(R.id.cloud_account).findViewById(R.id.img);
+        /*
+      账户文字
+     */
+        TextView accoutTv = (TextView) view.findViewById(R.id.cloud_account).findViewById(R.id.hint_tv);
         accountEt = (EditText) view.findViewById(R.id.cloud_account).findViewById(R.id.edit);
-        pwdIv = (ImageView) view.findViewById(R.id.cloud_pwd).findViewById(R.id.img);
-        pwdTv = (TextView) view.findViewById(R.id.cloud_pwd).findViewById(R.id.hint_tv);
+        accountEt.setText(Share.getString(OBConstant.StringKey.CLOUD_USER, getActivity()));
+        /*
+      密码图片
+     */
+        ImageView pwdIv = (ImageView) view.findViewById(R.id.cloud_pwd).findViewById(R.id.img);
+        /*
+      密码文字
+     */
+        TextView pwdTv = (TextView) view.findViewById(R.id.cloud_pwd).findViewById(R.id.hint_tv);
         pwdEt = (EditText) view.findViewById(R.id.cloud_pwd).findViewById(R.id.edit);
+        pwdEt.setText(Share.getString(OBConstant.StringKey.CLOUD_PSW, getActivity()));
+        pwdEt.setTransformationMethod(PasswordTransformationMethod.getInstance());
         accountIv.setImageResource(R.drawable.user);
         accoutTv.setText(R.string.login_cloud_account);
         pwdIv.setImageResource(R.drawable.password);
@@ -128,44 +131,64 @@ public class CloudFrg extends BaseFragment implements Respond,HttpRespond{
         cloudBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(getActivity(), MainAct.class);
-                startActivity(intent);
-                getActivity().finish();
+                if (!accountEt.getText().toString().equals("") && !pwdEt.getText().toString().equals("")) {
+                    NetUtil.doCloudEven(CloudFrg.this, CloudConstant.CmdValue.LOGIN);
+                } else {
+                    showToat(getString(R.string.can_not_empty_input));
+                }
             }
         });
     }
 
 
-
-
-    @Override
-    public void onReceive(Message message) {
-
-    }
-
     @Override
     public void onRequest() {
-
+        switch (GetParameter.ACTION) {
+            case CloudConstant.CmdValue.LOGIN:
+                showProgressDialog(getString(R.string.wait), getString(R.string.on_logtin), false);
+                break;
+        }
     }
 
     @Override
     public List<NameValuePair> getParamter() {
+        switch (GetParameter.ACTION) {
+            case CloudConstant.CmdValue.LOGIN:
+                return GetParameter.onLogin(accountEt.getText().toString(), pwdEt.getText().toString());
+
+        }
         return null;
     }
 
     @Override
     public void onSuccess(String json) {
+        disMissProgressDialog();
+        if (!CloudParseUtil.isSucceful(json)) {
+            showToat(CloudParseUtil.getJsonParm(json, CloudConstant.ParameterKey.MSG));
+            return;
+        }
+        switch (GetParameter.ACTION) {
+            case CloudConstant.CmdValue.LOGIN:
+                NetUtil.setCloudModeDetial(Integer.parseInt(CloudParseUtil.getJsonParm(json, CloudConstant.ParameterKey.WEIGHT)));
+                GetParameter.ACCESSTOKEN = CloudParseUtil.getJsonParm(json, CloudConstant.ParameterKey.ACCESS_TOKEN);
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), MainAct.class);
+                startActivity(intent);
+                break;
+
+        }
 
     }
 
     @Override
     public void onFaild(Exception e) {
-
+        disMissProgressDialog();
+        showToat(getString(R.string.net_err));
     }
 
     @Override
     public void onFaild(int state) {
-
+        disMissProgressDialog();
+        showToat(getString(R.string.check_wifi_tips));
     }
 }

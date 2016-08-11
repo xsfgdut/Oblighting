@@ -195,30 +195,7 @@ public class ParseUtil {
     }
 
 
-    /**
-     * 获得口令
-     *
-     * @param json 传入json数据
-     * @return 口令
-     */
-    public static String getAccesToken(String json) {
-        JSONObject jsonObject = null;
-        String access = null;
-        try {
-            jsonObject = new JSONObject(json);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        if (jsonObject == null) {
-            return null;
-        }
-        try {
-            access = jsonObject.getString(CloudConstant.ParameterKey.ACCESS_TOKEN);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return access;
-    }
+
 
     /**
      * 解析单节点并决定流程终止或继续

@@ -10,7 +10,7 @@ import android.content.SharedPreferences;
 public class Share {
     private static SharedPreferences sp;
     private static final String SHARP_NAME = "obsmart";
-    private static final String DEF_STRING = "null";
+    private static final String DEF_STRING = "";
 
     /**实例化SharedPreferences
      * @param context 上下文
@@ -21,15 +21,7 @@ public class Share {
         }
     }
 
-    /** 获得实例化的SharedPreferences
-     * @param context 上下文
-     */
-    public SharedPreferences getSp(Context context){
-        if (sp == null) {
-            sp = context.getSharedPreferences(SHARP_NAME, Context.MODE_PRIVATE);
-        }
-        return sp;
-    }
+
 
     /**
      * @param key 键
@@ -48,7 +40,7 @@ public class Share {
      * @param context 环境
      * @return 键
      */
-    public String getString(String key, Context context) {
+    public static String getString(String key, Context context) {
         instanc(context);
         return sp.getString(key, DEF_STRING);
     }
@@ -70,7 +62,7 @@ public class Share {
      * @param context 环境
      * @return boolean
      */
-    public boolean getBoolean(String key, Context context) {
+    public static boolean getBoolean(String key, Context context) {
         instanc(context);
         return sp.getBoolean(key, false);
     }

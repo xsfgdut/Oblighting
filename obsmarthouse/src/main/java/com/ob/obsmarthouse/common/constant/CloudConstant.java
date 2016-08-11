@@ -28,10 +28,12 @@ public interface CloudConstant {
         /**
          * 参数的key
          */
+        String MSG = "msg";
         String USERNAME = "user_name";
         String ACCESS_TOKEN = "access_token";
         String PASS_WORD = "pwd";
         String OBOX = "obox";
+        String WEIGHT = "weight";
         String OBOX_SERIAL_ID = "obox_serial_id";
         String OBOX_OLD_PWD = "obox_old_pwd";
         String OBOX_NEW_PWD = "obox_new_pwd";
@@ -81,6 +83,7 @@ public interface CloudConstant {
      * 请求参数字段具体值
      */
     interface ParameterValue {
+        String NULL = "null";
         String FORCE_TRUE = "true";
         String SIMPLE_SCENE = "0";
         String TIM_SCENE = "1";
@@ -269,5 +272,28 @@ public interface CloudConstant {
          */
         int EVEN_MODIFY_SCENE = 3;
         String KEY = "json";
+    }
+    /**
+     * {@link #ADMIN}与的主要区别在于其可以创建楼层概念，楼宇概念可以用来区分智能楼宇和智能家居
+     * 服务器登录后详细的用户类型
+     */
+    interface CloudDitalMode {
+        /**
+         * 超级管理员，拥有所有权限
+         */
+        String SUPERROOT = "00";
+        /**
+         * 总管理员，拥有创建楼宇管理员权限，次于超级管理员的所有权限，当有授权码的时候就可以创建ADMINOFBD
+         */
+        String ROOT = "01";
+        /**
+         * 楼宇管理员，权限:创建guest，创建楼层，创建房间，增加位置信息，修改组节点关系，创建情景,设备升级权限，
+         */
+        String ADMIN = "02";
+
+        /**
+         * 访客，拥有节点控制，组控制，情景使能，位置信息读取权限
+         */
+        String GUEST = "03";
     }
 }

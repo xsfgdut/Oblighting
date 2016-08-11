@@ -19,6 +19,7 @@ public interface OBConstant {
         String CTRL_NODE = "ctrl_node";
         String LAMP = "lamp";
         String POSITION_ROOM = "position_room";
+        String CLOUD_USER = "cloud_user";
     }
 
     /**

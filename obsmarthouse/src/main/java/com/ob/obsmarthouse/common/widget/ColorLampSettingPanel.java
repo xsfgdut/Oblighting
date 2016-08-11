@@ -13,9 +13,7 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 
 import com.ob.obsmarthouse.R;
-import com.ob.obsmarthouse.common.bean.localbean.Lamp;
 import com.ob.obsmarthouse.common.constant.OBConstant;
-import com.ob.obsmarthouse.common.net.localnet.TcpSend;
 
 @SuppressLint("NewApi")
 public class ColorLampSettingPanel extends ViewGroup {
@@ -24,18 +22,16 @@ public class ColorLampSettingPanel extends ViewGroup {
     private Bitmap yBitmap;
     private long oldTime = 0;
     private long mTime;
-    private long minTime = 200;
-    private boolean isLocal;
-    private TcpSend tcpSend;
-    private Lamp lamp;
-    /**
-     * 操作是否为组
-     */
-    private boolean isGroup;
+
 
     public ColorLampSettingPanel(Context context, AttributeSet attrs,
                                  int defStyle) {
         super(context, attrs, defStyle);
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+
     }
 
     public ColorLampSettingPanel(Context context) {
@@ -49,43 +45,21 @@ public class ColorLampSettingPanel extends ViewGroup {
         super(context, attrs);
     }
 
-    @Override
-    protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        init();
-        drawPanel();
-    }
-
-    public void setMode(boolean isLocal) {
-        this.isLocal = isLocal;
-    }
-
 
     /**
-     * 设置控件参数，包括当前连接，选中设备，是否为组
-     *
-     * @param tcpSend 当前连接
-     * @param lamp    单节点或者组内第一个节点
-     * @param isGroup 如果是组操作则为true，否则false
+     * 节点类型
      */
-    public void setParamter(TcpSend tcpSend, Lamp lamp, boolean isGroup) {
-        this.tcpSend = tcpSend;
-        this.lamp = lamp;
-        this.isGroup = isGroup;
-    }
+    private int type;
 
     /**
-     * 绘制调色板
+     *  设置页面show状态
      */
-    public void drawPanel() {
-        setBackgroundDrawable(new BitmapDrawable(yBitmap));
-    }
-
-    /**
-     * 初始化取色底图与取色器
-     */
-    public void init() {
-        mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.user).copy(Bitmap.Config.ARGB_8888, true);
-        switch (lamp.getType()) {
+    public void setView(int type, int cool, int red, int green, int blue) {
+        this.type = type;
+        if (mBitmap == null) {
+            mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.pick_color_point).copy(Bitmap.Config.ARGB_8888, true);
+        }
+        switch (type) {
             case OBConstant.NodeType.IS_COLOR_LAMP:
                 yBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.color_panel).copy(Bitmap.Config.ARGB_8888, true);
                 break;
@@ -96,25 +70,20 @@ public class ColorLampSettingPanel extends ViewGroup {
                 yBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.simple_panel).copy(Bitmap.Config.ARGB_8888, true);
                 break;
         }
-    }
-
-    /**
-     * 获取状态中的某一个字节
-     */
-    private int getStateDetial(int index) {
-        return lamp.getIndexState(index);
+        //noinspection deprecation
+        setBackgroundDrawable(new BitmapDrawable(yBitmap));
+        initPoint(cool, red, green, blue);
     }
 
 
     /**
      * 重定位触点坐标
      */
-    public void initPoint() {
-        switch (lamp.getType()) {
+    private void initPoint(int cool, int red, int green, int blue) {
+        switch (type) {
             case OBConstant.NodeType.IS_SIMPLE_LAMP:
                 break;
             case OBConstant.NodeType.IS_WARM_LAMP:
-                int cool = getStateDetial(Lamp.COOL);
                 int x;
                 int y;
                 if (cool <= 255 && cool > 234) {
@@ -160,9 +129,6 @@ public class ColorLampSettingPanel extends ViewGroup {
                 mPoint.set(x, y);
                 break;
             case OBConstant.NodeType.IS_COLOR_LAMP:
-                int red = getStateDetial(Lamp.RED);
-                int green = getStateDetial(Lamp.GREEN);
-                int blue = getStateDetial(Lamp.BLUE);
                 int xC;
                 int yC;
                 if (red == 255 && green >= 204 && green <= 255 && blue == 0) {
@@ -298,8 +264,9 @@ public class ColorLampSettingPanel extends ViewGroup {
         if (distance < (getWidth() / 2 - mBitmap.getWidth() / 2)) {
             mPoint.set((int) event.getX() - mBitmap.getWidth() / 2, (int) event.getY() - mBitmap.getHeight() / 2);
             mTime = System.currentTimeMillis();
+            long minTime = 200;
             if (mTime - oldTime > minTime) {
-                switch (lamp.getType()) {
+                switch (type) {
                     case OBConstant.NodeType.IS_COLOR_LAMP:
                         setColorLamp(event, distanceX, distanceY, distance);
                         break;
@@ -311,7 +278,8 @@ public class ColorLampSettingPanel extends ViewGroup {
         }
     }
 
-    /**设置暖色灯
+    /**
+     * 设置暖色灯
      */
     private void setWarmLamp(MotionEvent event, double distanceX, double distanceY, double distance) {
         double cool = 0;
@@ -345,12 +313,14 @@ public class ColorLampSettingPanel extends ViewGroup {
         else if (event.getX() > getWidth() / 2 && event.getY() > getHeight() / 2) {
             cool = 255 - 255 * (135 + Math.toDegrees(Math.asin((Math.abs(distanceY) / distance)))) / 360.0;
         }
-        lamp.setIndexState(Lamp.COOL, (int) cool);
         oldTime = mTime;
-        setColor(lamp);
+        if (onColorChangeLsn != null) {
+            onColorChangeLsn.onWarmChange((int) cool);
+        }
     }
 
-    /**设置彩色灯
+    /**
+     * 设置彩色灯
      */
     private void setColorLamp(MotionEvent event, double distanceX, double distanceY, double distance) {
         double rColor = 0;
@@ -398,36 +368,26 @@ public class ColorLampSettingPanel extends ViewGroup {
             gColor = 255;
             bColor = 255;
         }
-        lamp.setIndexState(Lamp.RED, (int) rColor);
-        lamp.setIndexState(Lamp.GREEN, (int) gColor);
-        lamp.setIndexState(Lamp.BLUE, (int) bColor);
         oldTime = mTime;
-        setColor(lamp);
-    }
-
-    /**
-     * 区分不同模式发送控制指令
-     */
-    private void setColor(Lamp lamp) {
-        if (isLocal) {
-            onLocalSetColor(lamp);
-        } else {
-            onCloudSetColor(lamp);
+        if (onColorChangeLsn != null) {
+            onColorChangeLsn.onColorChange((int) rColor, (int) gColor, (int) bColor);
         }
     }
 
-    /**
-     * 本地模式设置
-     */
-    private void onLocalSetColor(Lamp lamp) {
-        tcpSend.setNodeState(lamp, isGroup);
+    OnColorChangeLsn onColorChangeLsn;
+
+    public void setOnColorChangeLsn(OnColorChangeLsn onColorChangeLsn) {
+        this.onColorChangeLsn = onColorChangeLsn;
     }
 
     /**
-     * 服务器模式设置
+     * 颜色变化回调接口
      */
-    private void onCloudSetColor(Lamp lamp) {
+    public interface OnColorChangeLsn {
+        void onWarmChange(int cool);
 
+        void onColorChange(int red, int green, int blue);
     }
+
 
 }

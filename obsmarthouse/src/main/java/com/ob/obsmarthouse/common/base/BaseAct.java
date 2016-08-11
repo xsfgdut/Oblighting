@@ -16,7 +16,7 @@ import com.ob.obsmarthouse.common.util.NetUtil;
  * 基础Act
  * Created by adolf_dong on 2016/5/27.
  */
-public abstract class BaseAct extends FragmentActivity {
+public abstract class BaseAct extends FragmentActivity{
     ProgressDialog progressDialog;
     public static final int ONE = 1;
     public static final int TWO = 2;

@@ -9,8 +9,8 @@ import com.ob.obsmarthouse.common.adapter.DeviceBaseAdapter;
  * Created by adolf_dong on 2016/8/9.
  */
 public class CloudDeviceFragAdapter extends DeviceBaseAdapter{
-    int[] nodeImgs ;
-    int[] nodeTypes;
+   private int[] nodeImgs ;
+    private int[] nodeTypes;
     public CloudDeviceFragAdapter(Context context) {
         super(context);
         nodeTypes = new int[]{R.string.lamp,R.string.sensor,R.string.wind_curtain,

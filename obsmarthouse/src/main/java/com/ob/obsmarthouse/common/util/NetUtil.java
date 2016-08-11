@@ -179,9 +179,6 @@ public class NetUtil {
         return GetParameter.ACTION;
     }
 
-
-
-
     /**
      * 设置当前工作模式
      *

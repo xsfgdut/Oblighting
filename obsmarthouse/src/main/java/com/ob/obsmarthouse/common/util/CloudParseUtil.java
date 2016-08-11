@@ -34,4 +34,29 @@ public class CloudParseUtil {
         }
         return succeful;
     }
+    /**
+     * 获得对应的字符串参数
+     *
+     * @param json 传入json数据
+     * @param key  example {@link CloudConstant.ParameterKey#ACCESS_TOKEN}
+     * @return 对应的字符串参数
+     */
+    public static String getJsonParm(String json,String key) {
+        JSONObject jsonObject = null;
+        String val = "null";
+        try {
+            jsonObject = new JSONObject(json);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if (jsonObject == null) {
+            return val;
+        }
+        try {
+            val = jsonObject.getString(key);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return val;
+    }
 }

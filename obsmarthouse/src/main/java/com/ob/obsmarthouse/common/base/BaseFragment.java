@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.ob.obsmarthouse.R;
 import com.ob.obsmarthouse.common.constant.OBConstant;
 import com.ob.obsmarthouse.common.util.NetUtil;
 
@@ -128,11 +130,14 @@ public abstract class BaseFragment extends Fragment {
      * @param cancel  是否可被取消
      */
     public void showProgressDialog(String title, String message, boolean cancel) {
+
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setTitle(title);
         progressDialog.setMessage(message);
         progressDialog.setCancelable(cancel);
         progressDialog.show();
+        progressDialog.setButton(ProgressDialog.BUTTON1,getString(R.string.cancel),new Message());
+
     }
 
     /**

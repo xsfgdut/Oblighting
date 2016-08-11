@@ -40,6 +40,7 @@ public class CtrlLampAct extends BaseAct {
 
     }
 
+
     @Override
     protected void onSuper() {
 
