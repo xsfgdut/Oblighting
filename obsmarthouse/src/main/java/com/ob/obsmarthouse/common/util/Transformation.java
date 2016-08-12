@@ -40,9 +40,9 @@ public class Transformation {
         int v = src & 0xFF;
         String hv = Integer.toHexString(v);
         // FIXME: 2016/7/21 不补0
-//        if (hv.length() < 2) {
-//            stringBuilder.append(0);
-//        }
+        if (hv.length() < 2) {
+            stringBuilder.append(0);
+        }
         stringBuilder.append(hv);
         return stringBuilder.toString();
     }

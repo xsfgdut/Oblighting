@@ -1,14 +1,20 @@
 package com.ob.obsmarthouse.common.util;
 
+import com.google.gson.Gson;
+import com.ob.obsmarthouse.common.bean.cloudbean.DeviceConfig;
 import com.ob.obsmarthouse.common.constant.CloudConstant;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.List;
 
 /**解析返回的
  * Created by adolf_dong on 2016/7/20.
  */
 public class CloudParseUtil {
+
 
     /**
      * 检测回复的json状态
@@ -58,5 +64,21 @@ public class CloudParseUtil {
             e.printStackTrace();
         }
         return val;
+    }
+
+    public static void initDevice(String json, List<DeviceConfig> deviceConfigs) {
+        Gson gson = new Gson();
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            JSONArray jsonArray = jsonObject.getJSONArray(CloudConstant.ParameterKey.CONFIG);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                DeviceConfig deviceConfig = gson.fromJson(jsonArray.getString(i), DeviceConfig.class);
+                deviceConfigs.add(deviceConfig);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
     }
 }

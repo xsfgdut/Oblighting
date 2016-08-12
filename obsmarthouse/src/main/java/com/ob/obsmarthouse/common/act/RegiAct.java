@@ -1,21 +1,18 @@
 package com.ob.obsmarthouse.common.act;
 
 import android.os.Bundle;
+import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-
 import com.ob.obsmarthouse.R;
-import com.ob.obsmarthouse.common.base.BaseAct;
+import com.ob.obsmarthouse.common.base.InteractiveBaseAct;
 import com.ob.obsmarthouse.common.constant.CloudConstant;
 import com.ob.obsmarthouse.common.net.cloudnet.GetParameter;
-import com.ob.obsmarthouse.common.net.cloudnet.HttpRespond;
 import com.ob.obsmarthouse.common.util.CloudParseUtil;
-import com.ob.obsmarthouse.common.util.NetState;
 import com.ob.obsmarthouse.common.util.NetUtil;
-import com.ob.obsmarthouse.common.util.ParseUtil;
 
 import org.apache.http.NameValuePair;
 
@@ -25,7 +22,7 @@ import java.util.List;
  * 注册界面
  * Created by adolf_dong on 2016/5/13.
  */
-public class RegiAct extends BaseAct implements HttpRespond {
+public class RegiAct extends InteractiveBaseAct {
     /**
      * 注册图片
      */
@@ -60,19 +57,43 @@ public class RegiAct extends BaseAct implements HttpRespond {
      */
     private ImageView fnsBtn;
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void findView(Bundle savedInstanceState) {
         setContentView(R.layout.act_regist);
         getView();
+    }
+
+    @Override
+    protected void onStationMode(Bundle savedInstanceState) {
+
+    }
+
+    @Override
+    protected void onSuper() {
+
+    }
+
+    @Override
+    protected void onRoot() {
+
+    }
+
+    @Override
+    protected void onAdmin() {
+
+    }
+
+    @Override
+    protected void onGuest() {
 
     }
 
     private void getView() {
         accountImg = (ImageView) (findViewById(R.id.regist_id).findViewById(R.id.regist_img));
-        accountImg.setImageResource(R.mipmap.regist_account);
+        accountImg.setImageResource(R.drawable.regist_phone_nm);
         pswImg = (ImageView) (findViewById(R.id.regist_psw).findViewById(R.id.regist_img));
-        pswImg.setImageResource(R.mipmap.regist_psw);
+        pswImg.setImageResource(R.drawable.regist_pwd);
 //        codeImg = (ImageView) (findViewById(R.id.regist_code).findViewById(R.id.regist_img));
 //        codeImg.setImageResource(R.mipmap.regist_secur_code);
         idEt = (EditText) (findViewById(R.id.regist_id).findViewById(R.id.regist_edt));
@@ -90,7 +111,7 @@ public class RegiAct extends BaseAct implements HttpRespond {
 
     @Override
     public void onRequest() {
-        showProgressDialog(getString(R.string.tips_title), getString(R.string.on_do), false);
+        showProgressDialog(getString(R.string.wait), getString(R.string.on_rigest), false);
     }
 
     @Override
@@ -116,14 +137,10 @@ public class RegiAct extends BaseAct implements HttpRespond {
         }
     }
 
-    @Override
-    public void onFaild(Exception e) {
-        onfalDo();
-    }
 
     @Override
-    public void onFaild(int state) {
-        onfalDo();
+    public void onReceive(Message message) {
+
     }
 
     private class RegLsn implements View.OnClickListener {

@@ -3,6 +3,7 @@ package com.ob.obsmarthouse.common.frag.loginfrag;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
@@ -15,12 +16,13 @@ import android.widget.TextView;
 
 import com.ob.obsmarthouse.R;
 import com.ob.obsmarthouse.common.act.MainAct;
-import com.ob.obsmarthouse.common.base.BaseFragment;
+import com.ob.obsmarthouse.common.act.RegiAct;
+import com.ob.obsmarthouse.common.base.InteractiveBaseFragment;
+import com.ob.obsmarthouse.common.bean.User;
 import com.ob.obsmarthouse.common.constant.CloudConstant;
 import com.ob.obsmarthouse.common.constant.OBConstant;
 import com.ob.obsmarthouse.common.lsn.ChangeModeLSN;
 import com.ob.obsmarthouse.common.net.cloudnet.GetParameter;
-import com.ob.obsmarthouse.common.net.cloudnet.HttpRespond;
 import com.ob.obsmarthouse.common.share.Share;
 import com.ob.obsmarthouse.common.util.CloudParseUtil;
 import com.ob.obsmarthouse.common.util.NetUtil;
@@ -33,7 +35,7 @@ import java.util.List;
  * 登录界面远程登录
  * Created by adolf_dong on 2016/6/3.
  */
-public class CloudFrg extends BaseFragment implements HttpRespond {
+public class CloudFrg extends InteractiveBaseFragment  {
     /**
      * 账户编辑
      */
@@ -128,16 +130,9 @@ public class CloudFrg extends BaseFragment implements HttpRespond {
         toLocaltv.setTextColor(getResources().getColor(R.color.night_black));
         toLocaltv.setOnClickListener(new ChangeModeLSN(getActivity(), true));
         Button cloudBtn = (Button) view.findViewById(R.id.login_cloud_btn);
-        cloudBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!accountEt.getText().toString().equals("") && !pwdEt.getText().toString().equals("")) {
-                    NetUtil.doCloudEven(CloudFrg.this, CloudConstant.CmdValue.LOGIN);
-                } else {
-                    showToat(getString(R.string.can_not_empty_input));
-                }
-            }
-        });
+        cloudBtn.setOnClickListener(new LoginClickListener());
+        TextView registTv = (TextView) view.findViewById(R.id.regist_tv);
+        registTv.setOnClickListener(new ToRegistLsn());
     }
 
 
@@ -162,15 +157,29 @@ public class CloudFrg extends BaseFragment implements HttpRespond {
 
     @Override
     public void onSuccess(String json) {
-        disMissProgressDialog();
-        if (!CloudParseUtil.isSucceful(json)) {
-            showToat(CloudParseUtil.getJsonParm(json, CloudConstant.ParameterKey.MSG));
-            return;
-        }
         switch (GetParameter.ACTION) {
             case CloudConstant.CmdValue.LOGIN:
                 NetUtil.setCloudModeDetial(Integer.parseInt(CloudParseUtil.getJsonParm(json, CloudConstant.ParameterKey.WEIGHT)));
                 GetParameter.ACCESSTOKEN = CloudParseUtil.getJsonParm(json, CloudConstant.ParameterKey.ACCESS_TOKEN);
+                String weight = CloudParseUtil.getJsonParm(json, CloudConstant.ParameterKey.WEIGHT);
+                User user = User.getUser();
+                String userName = accountEt.getText().toString();
+                switch (weight) {
+                    case CloudConstant.CloudDitalMode.SUPERROOT:
+                        user.setSuperRootName(userName);
+                        break;
+                    case CloudConstant.CloudDitalMode.ROOT:
+                        user.setRootName(userName);
+                        break;
+                    case CloudConstant.CloudDitalMode.ADMIN:
+                        user.setAdminName(userName);
+                        break;
+                    case CloudConstant.CloudDitalMode.GUEST:
+                        user.setGuestName(userName);
+                        break;
+                }
+                Share.putString(OBConstant.StringKey.CLOUD_USER,userName,getActivity());
+                Share.putString(OBConstant.StringKey.CLOUD_PSW,pwdEt.getText().toString(),getActivity());
                 Intent intent = new Intent();
                 intent.setClass(getActivity(), MainAct.class);
                 startActivity(intent);
@@ -181,14 +190,27 @@ public class CloudFrg extends BaseFragment implements HttpRespond {
     }
 
     @Override
-    public void onFaild(Exception e) {
-        disMissProgressDialog();
-        showToat(getString(R.string.net_err));
+    public void onReceive(Message message) {
+
     }
 
-    @Override
-    public void onFaild(int state) {
-        disMissProgressDialog();
-        showToat(getString(R.string.check_wifi_tips));
+    private class ToRegistLsn implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent();
+            intent.setClass(getActivity(), RegiAct.class);
+            startActivity(intent);
+        }
+    }
+
+    private class LoginClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            if (!accountEt.getText().toString().equals("") && !pwdEt.getText().toString().equals("")) {
+                NetUtil.doCloudEven(CloudFrg.this, CloudConstant.CmdValue.LOGIN);
+            } else {
+                showToat(getString(R.string.can_not_empty_input));
+            }
+        }
     }
 }

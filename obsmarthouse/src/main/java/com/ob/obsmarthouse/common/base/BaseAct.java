@@ -20,13 +20,7 @@ public abstract class BaseAct extends FragmentActivity{
     ProgressDialog progressDialog;
     public static final int ONE = 1;
     public static final int TWO = 2;
-    /**
-     * 网络出错
-     */
-    protected void onfalDo() {
-        disMissProgressDialog();
-        showToat(getString(R.string.net_err));
-    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

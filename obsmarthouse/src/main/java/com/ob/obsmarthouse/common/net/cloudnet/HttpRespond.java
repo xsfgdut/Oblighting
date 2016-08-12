@@ -21,5 +21,7 @@ public interface HttpRespond {
     void onFaild(int state);
 
 
+    void onRespond();
 
+    void operationFailed(String json);
 }

@@ -9,7 +9,7 @@ import com.ob.obsmarthouse.common.constant.OBConstant;
 
 import java.util.List;
 
-/**cloud mode positionNodeAdapter
+/**服务器版本位置节点信息
  * Created by asus on 2016-8-9.
  */
 public class ClouPositionNodeAdapter extends BasePositionNodeAdapter {
@@ -79,7 +79,7 @@ public class ClouPositionNodeAdapter extends BasePositionNodeAdapter {
 
     @Override
     protected CharSequence onSetDetailId(int groupPosition, int childPosition) {
-        return deviceList.get(groupPosition).get(childPosition).getID();
+        return deviceList.get(groupPosition).get(childPosition).getName();
     }
 
     @Override

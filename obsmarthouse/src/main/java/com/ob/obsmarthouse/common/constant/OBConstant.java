@@ -12,14 +12,14 @@ public interface OBConstant {
         String RFPSWKEY = "rfpsw";
         String SPKEY = "psw";
         String ISLOCALKEY = "islocal";
-        String CLOUD_NAME = "cloudname";
-        String CLOUD_PSW = "cloudpsw";
         String JSON_OBOX = "cloud_obox";
         String NODETYPE = "nodetype";
         String CTRL_NODE = "ctrl_node";
         String LAMP = "lamp";
         String POSITION_ROOM = "position_room";
         String CLOUD_USER = "cloud_user";
+        String CLOUD_PSW = "cloudpsw";
+
     }
 
     /**

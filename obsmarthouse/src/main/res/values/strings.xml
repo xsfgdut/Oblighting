@@ -70,6 +70,10 @@
     <string name="can_not_empty_input">输入不能为空</string>
     <string name="regi_suc">注册成功</string>
     <string name="regi_fal">注册失败</string>
+    <string name="regi_hint_account">请输入用户名</string>
+    <string name="regi_hint_psw">请输入密码</string>
+    <string name="on_rigest">正在注册。。。</string>
+    <string name="rigest">注册</string>
 
 
 </resources>

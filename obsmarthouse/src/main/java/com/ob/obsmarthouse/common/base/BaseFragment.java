@@ -136,7 +136,6 @@ public abstract class BaseFragment extends Fragment {
         progressDialog.setMessage(message);
         progressDialog.setCancelable(cancel);
         progressDialog.show();
-        progressDialog.setButton(ProgressDialog.BUTTON1,getString(R.string.cancel),new Message());
 
     }
 

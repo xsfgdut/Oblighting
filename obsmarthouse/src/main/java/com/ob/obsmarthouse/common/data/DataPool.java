@@ -29,7 +29,7 @@ public class DataPool {
 
 
     /**
-     * 服务器位置相关节点类型组数据
+     * 服务器位置相关节点类型组数据,需要经过计算得到
      */
     private static List<List<DeviceConfig>> positionDeviceList = new ArrayList<>();
 
@@ -177,7 +177,26 @@ public class DataPool {
     }
 
     public static List<List<DeviceConfig>> getPositionDeviceList() {
-        return positionDeviceList;
+        List<List<DeviceConfig>> lists = new ArrayList<>();
+        for (int i = 0; i < devices.size(); i++) {
+            DeviceConfig deviceConfig = devices.get(i);
+            boolean isHaveNot = true;
+            for (int j = 0; j < lists.size(); j++) {
+                List<DeviceConfig> deviceConfigs = lists.get(j);
+                if (deviceConfigs.get(0).getDevice_type().equals(deviceConfig.getDevice_type())){
+                    isHaveNot = false;
+                    deviceConfigs.add(deviceConfig);
+                    break;
+                }
+            }
+            if (isHaveNot) {
+                List<DeviceConfig> deviceConfigs = new ArrayList<>();
+                deviceConfigs.add(deviceConfig);
+                lists.add(deviceConfigs);
+            }
+
+        }
+        return lists;
     }
 
     public static List<CloudScene> getCloudSceneInPositionList() {
@@ -217,8 +236,8 @@ public class DataPool {
      */
     public static List<DeviceConfig> getDevicesForType(int nodeType) {
         List<DeviceConfig> deviceConfigs = new ArrayList<>();
-        for (int i = 0; i < deviceConfigs.size(); i++) {
-            DeviceConfig deviceConfig = deviceConfigs.get(i);
+        for (int i = 0; i < devices.size(); i++) {
+            DeviceConfig deviceConfig = devices.get(i);
             int type = Integer.parseInt(deviceConfig.getDevice_type(), 16);
             if (type == nodeType) {
                 deviceConfigs.add(deviceConfig);

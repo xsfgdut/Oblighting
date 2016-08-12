@@ -1,20 +1,28 @@
 package com.ob.obsmarthouse.common.act;
 
 import android.os.Bundle;
+import android.os.Message;
 import android.support.v4.view.ViewPager;
 
 import com.ob.obsmarthouse.R;
 import com.ob.obsmarthouse.common.adapter.DynamicPagerAdapter;
 import com.ob.obsmarthouse.common.base.BaseAct;
+import com.ob.obsmarthouse.common.base.InteractiveBaseAct;
+import com.ob.obsmarthouse.common.constant.CloudConstant;
 import com.ob.obsmarthouse.common.frag.ctrllampfrag.ClasscialCtrlLampFrag;
 import com.ob.obsmarthouse.common.frag.ctrllampfrag.CustomCtrlLampFrag;
+import com.ob.obsmarthouse.common.net.cloudnet.GetParameter;
 import com.ob.obsmarthouse.common.widget.TopSelect;
 import com.ob.obsmarthouse.common.widget.TopTitle;
+
+import org.apache.http.NameValuePair;
+
+import java.util.List;
 
 /**灯节点控制页面
  * Created by adolf_dong on 2016/8/4.
  */
-public class CtrlLampAct extends BaseAct {
+public class CtrlLampAct extends InteractiveBaseAct {
     private TopTitle topTitle;
     private TopSelect topSelect;
     private ViewPager viewPager;
@@ -59,6 +67,27 @@ public class CtrlLampAct extends BaseAct {
 
     @Override
     protected void onGuest() {
+
+    }
+
+    @Override
+    public void onRequest() {
+
+    }
+
+    @Override
+    public List<NameValuePair> getParamter() {
+
+        return null;
+    }
+
+    @Override
+    public void onSuccess(String json) {
+
+    }
+
+    @Override
+    public void onReceive(Message message) {
 
     }
 }

@@ -1,7 +1,6 @@
 package com.ob.obsmarthouse.common.adapter.cloudadapter;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import com.ob.obsmarthouse.R;
 import com.ob.obsmarthouse.common.adapter.DrawBaseAdapter;
@@ -38,7 +37,7 @@ public class CloudShowSingleDrawAdapter extends DrawBaseAdapter{
 
     @Override
     protected String setDrawText(int position) {
-        return deviceConfigs.get(position).getID();
+        return deviceConfigs.get(position).getName();
     }
 
     @Override

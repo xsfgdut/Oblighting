@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
+    <ImageView
+        android:id="@+id/regist_img"
+        android:layout_width="@dimen/edit_h"
+        android:layout_height="@dimen/edit_h"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/small_padding"
+        android:src="@drawable/regist_captcha" />
+
+    <EditText
+        android:id="@+id/regist_edt"
+        android:layout_width="@dimen/edit_w"
+        android:layout_height="@dimen/edit_h"
+        android:layout_centerVertical="true"
+        android:textColorHint="@color/gray"
+        android:layout_marginLeft="@dimen/small_padding"
+        android:layout_toRightOf="@+id/regist_img"
+        android:background="@null"
+        android:textSize="@dimen/mid_text_size" />
+</RelativeLayout>

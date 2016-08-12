@@ -12,6 +12,7 @@ import com.ob.obsmarthouse.common.bean.cloudbean.DeviceConfig;
 import com.ob.obsmarthouse.common.bean.localbean.ObNode;
 import com.ob.obsmarthouse.common.constant.CloudConstant;
 import com.ob.obsmarthouse.common.constant.OBConstant;
+import com.ob.obsmarthouse.common.data.DataPool;
 import com.ob.obsmarthouse.common.widget.PositionView;
 import com.ob.obsmarthouse.common.widget.TopTitle;
 
@@ -70,7 +71,8 @@ public class PositionAct extends BaseAct {
                 Intent intent = new Intent();
                 if (positionNode instanceof DeviceConfig) {
                     DeviceConfig deviceConfig = (DeviceConfig) positionNode;
-                    switch (Integer.parseInt(deviceConfig.getDevice_type(),16)) {
+                    DataPool.setDeviceConfig(deviceConfig);
+                    switch (Integer.parseInt(deviceConfig.getDevice_type(), 16)) {
                         case OBConstant.NodeType.IS_LAMP:
                             intent.putExtra(OBConstant.StringKey.LAMP, deviceConfig);
                             intent.setClass(PositionAct.this, CtrlLampAct.class);
@@ -111,6 +113,7 @@ public class PositionAct extends BaseAct {
         initPositionDataOnCloud();
         setTopLeftClickLsn();
         onCloudNodeClickLsn();
+        setEditClickLsn();
     }
 
     /**
@@ -172,12 +175,12 @@ public class PositionAct extends BaseAct {
     private void initPositionDataOnCloud() {
          positionNodes = new ArrayList<>();
         /*模拟数据*/
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < DataPool.getDevices().size(); i++) {
             int x = i * 10;
             int y = i * 20;
-            DeviceConfig deviceConfig = new DeviceConfig(x, y);
-            deviceConfig.setDevice_type(CloudConstant.NodeType.IS_LAMP);
-            deviceConfig.setDevice_child_type(CloudConstant.NodeType.IS_COLOUR);
+            DeviceConfig deviceConfig = DataPool.getDevices().get(i);
+            deviceConfig.setX(x);
+            deviceConfig.setY(y);
             positionNodes.add(deviceConfig);
         }
         // FIXME: 2016/8/3 设置位置页面的参数，暂时设置为null，。通过link的inPosition判断是否要添加到已在

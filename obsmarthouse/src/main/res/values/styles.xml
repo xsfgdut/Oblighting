@@ -53,6 +53,32 @@
         <item name="android:background">@color/darkgray</item>
     </style>
 
+    <style name="bigmargin">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">@dimen/big_padding</item>
+    </style>
+    <style name="small" parent="bigmargin">
+        <item name="android:layout_marginTop">@dimen/mid_padding</item>
+    </style>
+    <style name="toosmall" parent="bigmargin">
+        <item name="android:layout_marginTop">@dimen/no_padding</item>
+    </style>
+    <style name="small_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/lit_textsize</item>
+        <item name="android:layout_marginTop">@dimen/small_text_margin</item>
+    </style>
+    <style name="big_text" parent="small_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/mid_text_size</item>
+        <item name="android:layout_marginTop">@dimen/big_text_margin</item>
+    </style>
 
 
+    <dimen name="small_text_margin">10dp</dimen>
+    <dimen name="big_text_margin">20dp</dimen>
 </resources>

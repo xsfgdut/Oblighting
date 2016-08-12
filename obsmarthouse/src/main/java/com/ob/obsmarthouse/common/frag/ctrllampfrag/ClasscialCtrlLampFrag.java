@@ -1,6 +1,7 @@
 package com.ob.obsmarthouse.common.frag.ctrllampfrag;
 
 import android.os.Bundle;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,11 +11,16 @@ import android.widget.GridView;
 import com.ob.obsmarthouse.R;
 import com.ob.obsmarthouse.common.adapter.CtrlLampGridAdapter;
 import com.ob.obsmarthouse.common.base.BaseFragment;
+import com.ob.obsmarthouse.common.base.InteractiveBaseFragment;
+
+import org.apache.http.NameValuePair;
+
+import java.util.List;
 
 /**经典调色方案
  * Created by asus on 2016-8-10.
  */
-public class ClasscialCtrlLampFrag extends BaseFragment {
+public class ClasscialCtrlLampFrag extends InteractiveBaseFragment {
     private GridView gridView;
     private CtrlLampGridAdapter ctrlLampGridAdapter;
     @Nullable
@@ -60,4 +66,23 @@ public class ClasscialCtrlLampFrag extends BaseFragment {
     }
 
 
+    @Override
+    public void onRequest() {
+
+    }
+
+    @Override
+    public List<NameValuePair> getParamter() {
+        return null;
+    }
+
+    @Override
+    public void onSuccess(String json) {
+
+    }
+
+    @Override
+    public void onReceive(Message message) {
+
+    }
 }

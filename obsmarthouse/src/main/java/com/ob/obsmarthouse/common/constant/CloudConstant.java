@@ -9,7 +9,8 @@ public interface CloudConstant {
         String DEFAULT_PSW = "8888";
         String SERVER = "BDCloud.on-bright.com";
         //    String Common = "http://58.248.16.158/common";
-        String Common = "http://BDCloud.on-bright.com/common";
+//        String Common = "http://BDCloud.on-bright.com/common";
+        String Common = "http://192.168.200.200/common";
     }
 
     /**
@@ -56,7 +57,7 @@ public interface CloudConstant {
         String ACTION = "action";
         String DEVICE_TYPE = "device_type";
         String DEVICE_CHILD_TYPE = "device_child_type";
-        String STATE = "state";
+        String STATE = "status";
         String TIME = "time";
         String OPERATE_TYPE = "operate_type";/*00是从当前组删除，01是添加到当前组,或者设置情景类型*/
         String SUPERID = "superID";
@@ -69,6 +70,7 @@ public interface CloudConstant {
         String CONDITION = "condition";
         String ACTION_ID = "action_id";
         String FORCE = "force";
+        String CONFIG = "config";
         /**
          * cmd指令
          */
@@ -77,12 +79,20 @@ public interface CloudConstant {
          * 返回数据的key值
          */
         String IS_SUCCESS = "success";
+        String START_INDEX = "start_index";
+        String ADMIN_NAME = "admin_name";
+        String GUEST_NAME = "guest_name";
+        String COUNT = "count";
+        String GROUPADDR = "groupAddr";
+        String ADDR = "addr";
     }
 
     /**
      * 请求参数字段具体值
      */
     interface ParameterValue {
+        String BILI = "ff";
+        String LightDef = "01";
         String NULL = "null";
         String FORCE_TRUE = "true";
         String SIMPLE_SCENE = "0";
@@ -182,6 +192,7 @@ public interface CloudConstant {
         String QUERY_SCENES = "query_scenes";
         String QUERY_UPGRADES = "query_upgrades";
         String QUERY_OBOX_BIND = "query_obox_bind";
+        String QUERY_DEVICE = "query_device";
     }
 
 

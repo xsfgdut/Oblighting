@@ -111,7 +111,7 @@ public class StringUtil {
             }
             for (int i = 0; i < deviceConfigs.size(); i++) {
                 DeviceConfig deviceConfig = deviceConfigs.get(i);
-                if (nodeName.equals(deviceConfig.getID())) {
+                if (nodeName.equals(deviceConfig.getName())) {
                     isExit = true;
                     break;
                 }

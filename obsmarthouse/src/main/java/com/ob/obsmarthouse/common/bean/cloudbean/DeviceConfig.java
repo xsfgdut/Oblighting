@@ -4,7 +4,6 @@ import com.ob.obsmarthouse.common.bean.PositionNode;
 import com.ob.obsmarthouse.common.constant.OBConstant;
 import com.ob.obsmarthouse.common.util.Transformation;
 
-import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 
 /**
@@ -14,13 +13,14 @@ import java.io.UnsupportedEncodingException;
 public class DeviceConfig extends Action implements  PositionNode {
 
 
-    private float x;
-    private float y;
+    private transient float x;
+    private transient float y;
 
     /**
      * 设备id
      */
-    private String ID;
+    private String name;
+
     /**
      * 序列号
      */
@@ -32,7 +32,7 @@ public class DeviceConfig extends Action implements  PositionNode {
     /**
      * 组地址
      */
-    private String group_addr;
+    private String groupAddr;
     /**
      * 状态
      */
@@ -44,7 +44,7 @@ public class DeviceConfig extends Action implements  PositionNode {
     /**
      * 子类型
      */
-    private String device_child_type = "3";
+    private String device_child_type ;
     /**
      * 版本号
      */
@@ -59,32 +59,32 @@ public class DeviceConfig extends Action implements  PositionNode {
 
     }
 
-    public DeviceConfig(String ID, String serialId, String addr, String group_addr,
+    public DeviceConfig(String name, String serialId, String addr, String groupAddr,
                         String state, String device_type,
                         String device_child_type,
                         String version) {
-        this.ID = ID;
+        this.name = name;
         this.serialId = serialId;
         this.addr = addr;
-        this.group_addr = group_addr;
+        this.groupAddr = groupAddr;
         this.state = state;
         this.device_type = device_type;
         this.device_child_type = device_child_type;
         this.version = version;
     }
 
-    public DeviceConfig(byte[] ID, byte[] serialId, byte addr, byte group_addr,
+    public DeviceConfig(byte[] name, byte[] serialId, byte addr, byte groupAddr,
                         byte[] state, byte device_type,
                         byte device_child_type,
                         byte[] version) {
         try {
-            this.ID = new String(ID, OBConstant.StringKey.UTF8);
+            this.name = new String(name, OBConstant.StringKey.UTF8);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
         this.serialId = Transformation.byteArryToHexString(serialId);
         this.addr = String.valueOf(addr & 0xff);
-        this.group_addr = String.valueOf(group_addr & 0xff);
+        this.groupAddr = String.valueOf(groupAddr & 0xff);
         this.state = Transformation.byteArryToHexString(state);
         this.device_type = Transformation.byte2HexString(device_type);
         this.device_child_type = Transformation.byte2HexString(device_child_type);
@@ -97,12 +97,12 @@ public class DeviceConfig extends Action implements  PositionNode {
     }
 
 
-    public String getID() {
-        return ID;
+    public String getName() {
+        return name;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getSerialId() {
@@ -121,12 +121,12 @@ public class DeviceConfig extends Action implements  PositionNode {
         this.addr = addr;
     }
 
-    public String getGroup_addr() {
-        return group_addr;
+    public String getGroupAddr() {
+        return groupAddr;
     }
 
-    public void setGroup_addr(String group_addr) {
-        this.group_addr = group_addr;
+    public void setGroupAddr(String groupAddr) {
+        this.groupAddr = groupAddr;
     }
 
     public String getState() {
@@ -200,4 +200,6 @@ public class DeviceConfig extends Action implements  PositionNode {
     public void setPosition(boolean inPosition) {
         this.inPosition = inPosition;
     }
+
+
 }

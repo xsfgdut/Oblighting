@@ -6,9 +6,11 @@ import android.os.Message;
 import android.util.Log;
 
 import com.ob.obsmarthouse.common.constant.CloudConstant;
+import com.ob.obsmarthouse.common.util.CloudParseUtil;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
@@ -17,6 +19,7 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -35,9 +38,14 @@ public class HttpRequst {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             int what = msg.what;
+            httpRespond.onRespond();
             switch (what) {
-                case  CloudConstant.ResponState.State_OK:
+                case CloudConstant.ResponState.State_OK:
                     String json = msg.getData().getString(CloudConstant.ResultKey.KEY);
+                    if (!CloudParseUtil.isSucceful(json)) {
+                        httpRespond.operationFailed(json);
+                        return;
+                    }
                     httpRespond.onSuccess(json);
                     break;
                 case CloudConstant.ResponState.State_F:
@@ -52,7 +60,6 @@ public class HttpRequst {
             }
         }
     };
-
 
 
     public static HttpRequst getHttpRequst() {
@@ -74,8 +81,8 @@ public class HttpRequst {
         this.httpRespond = httpRespond;
     }
 
-    public  void restore(){
-        this.httpRespond =backUphttpRespond;
+    public void restore() {
+        this.httpRespond = backUphttpRespond;
     }
 
     public void request() {
@@ -86,8 +93,9 @@ public class HttpRequst {
                 HttpClient httpclient = new DefaultHttpClient();
                 HttpPost httpPost = new HttpPost(CloudConstant.Source.Common);
                 try {
-                    httpPost.setEntity(new UrlEncodedFormEntity(httpRespond.getParamter()));
-                    Log.i(TAG, httpRespond.getParamter().toString());
+                    List<NameValuePair> nameValuePairs = httpRespond.getParamter();
+                    httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                    Log.i(TAG, nameValuePairs.toString());
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }

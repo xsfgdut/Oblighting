@@ -1,7 +1,10 @@
 package com.ob.obsmarthouse.common.net.cloudnet;
 
 
+import android.util.Log;
+
 import com.google.gson.Gson;
+import com.ob.obsmarthouse.common.bean.User;
 import com.ob.obsmarthouse.common.bean.cloudbean.Action;
 import com.ob.obsmarthouse.common.bean.cloudbean.CloudScene;
 import com.ob.obsmarthouse.common.bean.cloudbean.DeviceConfig;
@@ -89,21 +92,22 @@ public class GetParameter {
      * 设置单节点或者组节点的状态
      *
      * @param deviceConfig 节点
-     * @param obox         所属obox
-     * @param time         响应时间 即原先对应的时常
+     * @param isBili  是否闪烁
+     * @return
      */
-    public static List<NameValuePair> onSetNodeState(DeviceConfig deviceConfig, Obox obox, int time) {
+    public static List<NameValuePair> onSetNodeState(DeviceConfig deviceConfig,boolean isBili) {
         List<NameValuePair> nvps = new ArrayList<>();
         nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.CMD, CloudConstant.CmdValue.SETTING_NODE_STATUS));
         nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.ACCESS_TOKEN, ACCESSTOKEN));
-        nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.OBOX_SERIAL_ID, obox.getObox_serial_id()));
-        nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.DEVICE_ID,   deviceConfig.getID() ));
-        nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.DEVICE_TYPE, deviceConfig.getDevice_type()));
-        nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.DEVICE_CHILD_TYPE, deviceConfig.getDevice_child_type()));
-        nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.STATE, deviceConfig.getState()));
-        nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.TIME, Transformation.byte2HexString((byte) time)));
+        nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.OBOX_SERIAL_ID, deviceConfig.getObox_serial_id()));
+        nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.GROUPADDR,"00"));
+        nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.ADDR, deviceConfig.getAddr()));
+        nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.STATE,
+                deviceConfig.getState().substring(0,12)+(isBili?CloudConstant.ParameterValue.BILI:CloudConstant.ParameterValue.LightDef)));
         return nvps;
     }
+
+    private static final String TAG = "GetParameter";
 
 
     /**
@@ -135,7 +139,7 @@ public class GetParameter {
         nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.OBOX_SERIAL_ID, obox.getObox_serial_id()));
         nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.OPERATE_TYPE, isAdd ? CloudConstant.ParameterValue.IS_ADD_MEMBER : CloudConstant.ParameterValue.IS_DEL_MEMBER));
         nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.SUPERID, superId));
-        nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.DEVICE_ID, deviceConfig.getID()));
+        nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.DEVICE_ID, deviceConfig.getName()));
         return nvps;
     }
 
@@ -165,7 +169,7 @@ public class GetParameter {
         nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.CMD, CloudConstant.CmdValue.DELETE_SINGLE_DEVICE));
         nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.ACCESS_TOKEN, ACCESSTOKEN));
         nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.OBOX_SERIAL_ID, obox.getObox_serial_id()));
-        nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.DEVICE_ID, deviceConfig.getID()));
+        nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.DEVICE_ID, deviceConfig.getName()));
         return nvps;
     }
 
@@ -345,4 +349,18 @@ public class GetParameter {
         return nvps;
     }
 
+    public static List<NameValuePair> onQueryDevice(User user,int index ,int count) {
+        List<NameValuePair> nvps = new ArrayList<>();
+        nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.CMD, CloudConstant.CmdValue.QUERY_DEVICE));
+        nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.ACCESS_TOKEN, ACCESSTOKEN));
+        // FIXME: 2016/8/12 访客模式不传这些参数
+//        if (user.getAdminName()!=null) {
+//            nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.ADMIN_NAME, user.getAdminName()));
+//        }
+//
+//        nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.GUEST_NAME, user.getGuestName()));
+        nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.START_INDEX, String.valueOf(index)));
+        nvps.add(new BasicNameValuePair(CloudConstant.ParameterKey.COUNT, String.valueOf(count)));
+        return nvps;
+    }
 }

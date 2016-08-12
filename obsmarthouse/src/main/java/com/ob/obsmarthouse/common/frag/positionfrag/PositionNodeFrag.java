@@ -67,15 +67,7 @@ public class PositionNodeFrag extends BaseFragment {
     @Override
     protected void findView(View view, Bundle savedInstanceState) {
         expandableListView = (ExpandableListView) view.findViewById(R.id.position_scene_frag_explv);
-        List<List<DeviceConfig>> lists = new ArrayList<>();
-        List<DeviceConfig> deviceConfigs = new ArrayList<>();
-        DeviceConfig deviceConfig = new DeviceConfig();
-        deviceConfig.setID("Test");
-        deviceConfig.setDevice_type(CloudConstant.NodeType.IS_LAMP);
-        deviceConfig.setDevice_child_type(CloudConstant.NodeType.IS_COLOUR);
-        deviceConfigs.add(deviceConfig);
-        lists.add(deviceConfigs);
-        basePositionNodeAdapter = new ClouPositionNodeAdapter(getActivity(), lists);
+        basePositionNodeAdapter = new ClouPositionNodeAdapter(getActivity(), DataPool.getPositionDeviceList());
         expandableListView.setAdapter(basePositionNodeAdapter);
         expandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
 

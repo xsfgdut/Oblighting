@@ -11,14 +11,19 @@ import android.widget.TextView;
 
 import com.ob.obsmarthouse.R;
 import com.ob.obsmarthouse.common.base.BaseFragment;
+import com.ob.obsmarthouse.common.base.InteractiveBaseFragment;
 import com.ob.obsmarthouse.common.lsn.ChangeModeLSN;
 import com.ob.obsmarthouse.common.net.localnet.Respond;
+
+import org.apache.http.NameValuePair;
+
+import java.util.List;
 
 /**
  * 登录界面本地登陆
  * Created by adolf_dong on 2016/6/3.
  */
-public class LocalFrg extends BaseFragment implements Respond{
+public class LocalFrg extends InteractiveBaseFragment {
     private static LocalFrg localFrg;
     @SuppressLint("ValidFragment")
     private  LocalFrg(){}
@@ -93,6 +98,21 @@ public class LocalFrg extends BaseFragment implements Respond{
 
     @Override
     public void onReceive(Message message) {
+
+    }
+
+    @Override
+    public void onRequest() {
+
+    }
+
+    @Override
+    public List<NameValuePair> getParamter() {
+        return null;
+    }
+
+    @Override
+    public void onSuccess(String json) {
 
     }
 }
