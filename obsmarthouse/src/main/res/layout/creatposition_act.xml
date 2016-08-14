@@ -1,6 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--创建位置信息-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.ob.obsmarthouse.common.widget.TopTitle
+        android:id="@+id/create_position_tt"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mid_content_h" />
+
+    <ImageButton
+
+        android:id="@+id/create_position_btn"
+        android:layout_width="@dimen/mid_content_w"
+        android:layout_height="@dimen/mid_content_h"
+        android:background="@color/black" />
+
+    <ImageView
+        android:id="@+id/create_position_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/create_position_btn"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
